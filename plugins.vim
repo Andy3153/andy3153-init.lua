@@ -47,7 +47,7 @@
     Plug 'tpope/vim-fugitive'                                    " Commands for Git
     Plug 'lukas-reineke/indent-blankline.nvim'                   " Indent lines
     Plug 'norcalli/nvim-colorizer.lua'                           " Render colors present in text
-    Plug 'mhinz/vim-startify'                                    " Start screen
+    Plug 'goolord/alpha-nvim'                                    " Start screen
     Plug 'andweeb/presence.nvim'                                 " Discord Rich Presence (yes, really)
     Plug 'booperlv/nvim-gomove'                                  " Move selection in file
     "Plug 'kosayoda/nvim-lightbulb'                               " VSCode lightbulb

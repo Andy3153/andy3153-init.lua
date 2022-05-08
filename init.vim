@@ -98,7 +98,7 @@
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/lspconfig.lua
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/indent_blackline.lua
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/catppuccin.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/startify.lua
+  luafile $NVIM_CONFIG_FOLDER/plugin_conf/alpha.lua
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/colorizer.lua
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/treesitter.lua
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/fterm.lua
