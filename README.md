@@ -6,6 +6,7 @@ See [plugins.vim](../../blob/master/plugins.vim)
 
 ## Programs required to install:
   - pynvim
+  - python3-venv
   - ranger
   - xclip
 
