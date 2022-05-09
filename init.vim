@@ -112,6 +112,7 @@
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/jaq.lua
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/gomove.lua
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/which-key.lua
+  luafile $NVIM_CONFIG_FOLDER/plugin_conf/vimtex.lua
 " }}}
 
 " {{{ Colorscheme

@@ -55,6 +55,7 @@
     Plug 'rhysd/accelerated-jk'                                  " Repeat jk movements
     Plug 'mrjones2014/smart-splits.nvim'                         " Better split resize
     Plug 'sindrets/winshift.nvim'                                " Better split move
+    Plug 'lervag/vimtex'                                         " LaTeX support
 
     Plug 'nvim-treesitter/nvim-treesitter' ", {'do': ':TSUpdate'}  Better syntax highlighting
     Plug 'neovim/nvim-lspconfig'                                 " LSP server configuration
