@@ -53,7 +53,6 @@
   set number                 " Line numbering
   set relativenumber         " Relative line numbering
   set nocompatible           " Disable Vi compatibility
-  "set numberwidth=6          " Line numbering column width
   set mouse=a                " Enable mouse support
   set clipboard+=unnamedplus " Use system clipboard (REQUIRES xclip or wl-clipboard)
   set noshowmode             " Disable default mode showing since we use a statusbar
@@ -72,6 +71,7 @@
   set signcolumn=yes         " Keep signcolumn always on
   set splitbelow             " Open split below
   set splitright             " Open vsplit on right
+    set linebreak              " Break lines at spaces
 " }}}
 
 " {{{ Tabbing
@@ -124,10 +124,6 @@
 " {{{ Keybinds
   " Undo and redo
     nnoremap          U       <C-r>
-    nnoremap          <C-z>   u
-    nnoremap          <C-Z>   U
-    inoremap          <C-z>   <ESC>ui
-    inoremap          <C-Z>   <ESC>Ui
 
   " Splits
     " Create splits
@@ -150,7 +146,6 @@
     nnoremap <silent> <A-L>   :lua require('smart-splits').resize_right()<CR>
     nnoremap          <A-=>   <C-w><C-=>
     
-
   " Commenting
     nnoremap <silent> <C-_>   <Plug>(comment_toggle_current_linewise)<CR>
     vnoremap <silent> <C-_>   <Plug>(comment_toggle_blockwise_visual)<CR>
@@ -215,6 +210,10 @@
   " Accelerated-JK
     nmap j <Plug>(accelerated_jk_gj)
     nmap k <Plug>(accelerated_jk_gk)
+
+  " Alpha
+    nnoremap <silent> <A-n>   :Alpha<CR>
+    inoremap <silent> <A-n>   <ESC>:Alpha<CR>
 " }}}
 
 " {{{ Others
