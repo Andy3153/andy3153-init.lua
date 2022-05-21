@@ -6,7 +6,7 @@ local catppuccin = require("catppuccin")
 
 catppuccin.setup(
 {
-  transparent_background = true,
+  transparent_background = false,
   term_colors = true,
 
   styles = {

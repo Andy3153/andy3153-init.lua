@@ -66,12 +66,13 @@
   set ignorecase             " Ignore letter case when searching
   set smartcase              " Case insentive unless capitals used in search
   set termguicolors          " Required by nvim-colorizer
+  set guifont=Iosevka\ Term:h8.05
   set foldmethod=indent      " Fold code
   set foldlevel=99           " Max nested fold count
   set signcolumn=yes         " Keep signcolumn always on
   set splitbelow             " Open split below
   set splitright             " Open vsplit on right
-    set linebreak              " Break lines at spaces
+  set linebreak              " Break lines at spaces
 " }}}
 
 " {{{ Tabbing
@@ -85,12 +86,13 @@
   filetype plugin indent on  " use language‐specific plugins for indenting
 
 " Custom tabbing for specific languages
-  autocmd FileType html,lua,markdown,nginx,none,python,sh,text,vim,zsh setlocal tabstop=2
+  autocmd FileType html,lua,markdown,nginx,none,python,sh,text,vim,yaml,zsh setlocal tabstop=2
   autocmd FileType tex,cdrtoc setlocal tabstop=1
 " }}}
 
 " {{{ Plugins
   source $NVIM_CONFIG_FOLDER/plugins.vim " load plugins list
+  luafile $NVIM_CONFIG_FOLDER/plugin_conf/neovide.lua
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/lualine.lua
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/barbar.lua
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/coq.lua
@@ -117,7 +119,10 @@
 
 " {{{ Colorscheme
   colorscheme catppuccin                                       " pick colorscheme
-  autocmd VimEnter * highlight  Normal guibg=NONE ctermbg=NONE " disable backgroud
+  if exists('g:neovide')
+  else
+    autocmd VimEnter * highlight  Normal ctermbg=NONE guibg=NONE " disable backgroud
+  endif
   autocmd VimEnter * highlight! link CursorColumn CursorLine   " same color for cursor line and cursor column
 " }}}
 
