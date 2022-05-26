@@ -128,8 +128,11 @@
 " }}}
 
 " {{{ Keybinds
-  " Undo and redo
+  " Undo
     nnoremap          U       <C-r>
+
+  " Exit :term
+    tnoremap <ESC><ESC> <C-\><C-N>
 
   " Splits
     " Create splits
@@ -214,8 +217,8 @@
     vnoremap <silent> <C-l>   <Plug>GoVSDRight
 
   " Accelerated-JK
-    nmap j <Plug>(accelerated_jk_gj)
-    nmap k <Plug>(accelerated_jk_gk)
+    nmap j <Plug>(accelerated_jk_j)
+    nmap k <Plug>(accelerated_jk_k)
 
   " Alpha
     nnoremap <silent> <A-n>   :Alpha<CR>

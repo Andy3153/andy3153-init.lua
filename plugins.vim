@@ -37,7 +37,7 @@
     Plug 'andweeb/presence.nvim'                                   " Discord Rich Presence (yes, really)
     Plug 'booperlv/nvim-gomove'                                    " Move selection in file
     Plug 'folke/which-key.nvim'                                    " Keybind tooltips
-    Plug 'rhysd/accelerated-jk'                                    " Repeat jk movements
+    Plug 'rainbowhxch/accelerated-jk.nvim'                         " Repeat jk movements
     Plug 'mrjones2014/smart-splits.nvim'                           " Better split resize
     Plug 'sindrets/winshift.nvim'                                  " Better split move
     Plug 'lervag/vimtex'                                           " LaTeX support
