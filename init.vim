@@ -9,7 +9,9 @@
 " {{{ Variables
   " Folders
     let $NVIM_CONFIG_FOLDER = stdpath('config')
-    let $NVIM_DATA_FOLDER = stdpath('data')
+    let $NVIM_DATA_FOLDER   = stdpath('data')
+    let $AUTOLOAD_FOLDER    = getenv('NVIM_DATA_FOLDER') . "/site/autoload/"
+    let $PLUG_FOLDER        = getenv('AUTOLOAD_FOLDER') . "plugged/"
   
   " Buffer types to exclude from various plugins
     let g:buffertypes_to_exclude =
