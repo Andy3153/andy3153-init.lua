@@ -56,6 +56,7 @@
     Plug 'mrjones2014/smart-splits.nvim'                         " Better split resize
     Plug 'sindrets/winshift.nvim'                                " Better split move
     Plug 'lervag/vimtex'                                         " LaTeX support
+    Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } " Neovim in browser
 
     Plug 'nvim-treesitter/nvim-treesitter' ", {'do': ':TSUpdate'}  Better syntax highlighting
     Plug 'neovim/nvim-lspconfig'                                 " LSP server configuration
