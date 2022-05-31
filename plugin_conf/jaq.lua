@@ -5,16 +5,16 @@ require('jaq-nvim').setup
     default  = "float",           -- Default UI (see `Usage` for options)
     external =                   -- Uses external commands such as 'g++' and 'cargo'
     {
-      typescript = "deno run %",
-      javascript = "node %",
-      markdown   = "glow %",
-      python     = "python3 %",
-      rust       = "rustc % && ./$fileBase && rm $fileBase",
-      cpp        = "g++ % -o $fileBase && ./$fileBase",
-      go         = "go run %",
-      sh         = "sh %",
-      bash       = "bash %",
-      zsh        = "zsh %"
+      typescript = "deno run '%'",
+      javascript = "node '%'",
+      markdown   = "glow '%'",
+      python     = "python3 '%'",
+      rust       = "rustc '%' && '$fileBase'",
+      cpp        = "g++ '%' -o '$fileBase' && '$fileBase'",
+      go         = "go run '%'",
+      sh         = "sh '%'",
+      bash       = "bash '%'",
+      zsh        = "zsh '%'"
     },
     internal =                   -- Uses internal commands such as 'source' and 'luafile'
     {
