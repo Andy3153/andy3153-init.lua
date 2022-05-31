@@ -68,12 +68,13 @@
   set ignorecase             " Ignore letter case when searching
   set smartcase              " Case insentive unless capitals used in search
   set termguicolors          " Required by nvim-colorizer
-  set foldmethod=indent      " Fold code
+  set foldmethod=marker      " Fold code
   set foldlevel=99           " Max nested fold count
   set signcolumn=yes         " Keep signcolumn always on
   set splitbelow             " Open split below
   set splitright             " Open vsplit on right
   set linebreak              " Break lines at spaces
+  set modeline               " Enable modelines
 " }}}
 
 " {{{ Tabbing
@@ -110,7 +111,6 @@
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/cursorline.lua
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/autopairs.lua
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/presence.lua
-  "luafile $NVIM_CONFIG_FOLDER/plugin_conf/pretty-fold.lua
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/comment.lua
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/jaq.lua
   luafile $NVIM_CONFIG_FOLDER/plugin_conf/gomove.lua

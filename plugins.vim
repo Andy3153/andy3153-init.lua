@@ -42,6 +42,7 @@
     Plug 'sindrets/winshift.nvim'                                  " Better split move
     Plug 'lervag/vimtex'                                           " LaTeX support
     Plug 'glacambre/firenvim', {'do': {_ -> firenvim#install(0)}}  " Neovim in browser
+    Plug 'tpope/vim-surround'                                      " Surround text in parentheses
     Plug 'nvim-treesitter/nvim-treesitter' ", {'do': ':TSUpdate'}    Better syntax highlighting
     Plug 'neovim/nvim-lspconfig'                                   " LSP server configuration
     Plug 'williamboman/nvim-lsp-installer'                         " LSP installer
