@@ -10,6 +10,7 @@
   " Folders
     let $NVIM_CONFIG_FOLDER = stdpath('config')
     let $NVIM_DATA_FOLDER   = stdpath('data')
+    let $PACK_FOLDER        = getenv('NVIM_DATA_FOLDER') . "/site/pack/packer/opt/packer.nvim"
     let $AUTOLOAD_FOLDER    = getenv('NVIM_DATA_FOLDER') . "/site/autoload/"
     let $PLUG_FOLDER        = getenv('AUTOLOAD_FOLDER') . "plugged/"
   
@@ -94,28 +95,29 @@
 
 " {{{ Plugins
   source $NVIM_CONFIG_FOLDER/plugins.vim " load plugins list
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/neovide.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/lualine.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/barbar.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/coq.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/lsp-installer.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/lspconfig.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/indent_blackline.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/catppuccin.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/alpha.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/colorizer.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/treesitter.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/fterm.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/rnvimr.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/scrollbar.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/cursorline.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/autopairs.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/presence.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/comment.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/jaq.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/gomove.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/which-key.lua
-  luafile $NVIM_CONFIG_FOLDER/plugin_conf/vimtex.lua
+  "luafile $NVIM_CONFIG_FOLDER/lua/plugins2.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/neovide.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/lualine.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/barbar.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/coq.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/lsp-installer.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/lspconfig.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/indent_blankline.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/catppuccin.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/alpha.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/colorizer.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/treesitter.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/fterm.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/rnvimr.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/scrollbar.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/cursorline.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/autopairs.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/presence.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/comment.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/jaq.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/gomove.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/which-key.lua
+  luafile $NVIM_CONFIG_FOLDER/lua/plugin_conf/vimtex.lua
 " }}}
 
 " {{{ Colorscheme

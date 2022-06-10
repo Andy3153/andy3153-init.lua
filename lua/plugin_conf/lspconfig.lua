@@ -3,7 +3,7 @@
 --
 
 -- Configure all LSP servers with coq
-for _, lsp in ipairs(vim.g.lspservers_to_install) do
+for _, lsp in ipairs(lspservers_to_install) do
   require('lspconfig')[lsp].setup(require('coq').lsp_ensure_capabilities({
     -- on_attach = my_custom_on_attach,
   }))
