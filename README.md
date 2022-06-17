@@ -1,8 +1,8 @@
-# andy3153-init_vim
-This is my init.vim and all the plugins that I use with it.
+# andy3153-init.lua
+This is my init.lua and all the plugins that I use with it.
 
 ## Plugins included:
-See [plugins.vim](../../blob/master/plugins.vim)
+See [plugins.vim](../../blob/master/lua/plugins.lua)
 
 ## Programs required to install:
   - pynvim
