@@ -3,16 +3,16 @@
 --
 
 -- BufferNext through netrw
-vim.g.netrw_bufsettings = 'noma nomod nonu nowrap ro buflisted'
+g.netrw_bufsettings = 'noma nomod nonu nowrap ro buflisted'
 
 -- Set barbar's options
-vim.g.bufferline = {
+g.bufferline = {
   animation     = true,         -- animations
   auto_hide     = false,        -- auto-hiding the tab bar when there is a single buffer
   tabpages      = true,         -- current/total tabpages indicator (top right corner)
   closable      = true,         -- close button
   clickable     = true,         -- clickable tabs
-  icons         = both,         -- icons (true/false/numbers/both)
+  icons         = 'both',         -- icons (true/false/numbers/both)
   no_name_title = "Empty file", -- empty buffer title
 
   -- Configure icons on the bufferline.

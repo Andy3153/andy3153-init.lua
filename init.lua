@@ -80,12 +80,12 @@
     'dockerls',
     'html',
     'jdtls',
+    'marksman',
     'pylsp',
     'sumneko_lua',
     'texlab',
     'vimls'
   }
-    --'zeta_note'
   -- }}}
 -- }}}
 
@@ -113,9 +113,8 @@
   opt.linebreak      = true           -- Break lines at spaces
   opt.modeline       = true           -- Enable modelines
   opt.showcmd        = true           -- Shows commands
--- }}}
-
--- {{{ Tabbing
+  opt.list           = true           -- Enable showing special characters
+  opt.listchars      = 'trail:·'      -- Special characters to show
   opt.tabstop        = 4              -- Length of <TAB>
   opt.shiftwidth     = 0              -- Length when shifting text (<<, >> and == commands) (0 for ‘tabstop’)
   opt.softtabstop    = 0              -- Length when editing text (0 for ‘tabstop’, -1 for ‘shiftwidth’)
@@ -124,53 +123,16 @@
   opt.autoindent     = true           -- Reproduce the indentation of the previous line
   opt.smartindent    = true           -- Increase the indenting level after ‘{’, decrease it after ‘}’
   cmd("filetype plugin indent on")    -- Use language‐specific plugins for indenting
-
-  -- Custom tab sizes for specific filetypes
-  augroupc('tab_2spaces')
-  autocmd('FileType',
-  {
-    pattern = { '', 'html', 'lua', 'markdown', 'nginx', 'none', 'python', 'sh', 'text', 'vim', 'yaml', 'zsh' },
-    group   = 'tab_2spaces',
-    command = 'setlocal tabstop=2 shiftwidth=0 softtabstop=0'
-  })
-
-  augroupc('tab_1spaces')
-  autocmd('FileType',
-  {
-    pattern = { 'cdrtoc', 'plaintex', 'tex' },
-    group   = 'tab_1spaces',
-    command = 'setlocal tabstop=1 shiftwidth=0 softtabstop=0'
-  })
 -- }}}
 
 -- {{{ Colorscheme
   --g.colors_name = 'catppuccin' -- Set colorscheme
-
-  -- Disable background if Neovide is running
-  if not g.neovide then
-    augroupc('no_neovide')
-    autocmd('VimEnter',
-    {
-      pattern = '*',
-      group   = 'no_neovide',
-      command = 'highlight  Normal ctermbg=NONE guibg=NONE'
-    })
-  end
-
-  -- Use same color for cursor line and cursor column
-  augroupc('cursorcolumn')
-  autocmd('VimEnter',
-  {
-    pattern = '*',
-    group   = 'cursorcolumn',
-    command = 'highlight! link CursorColumn CursorLine'
-  })
 -- }}}
 
 -- {{{ Keybinds
   nnoremap( 'U',          '<C-r>')                                              -- Undo
   tnoremap( '<ESC><ESC>', '<C-\\><C-N>')                                        -- Normal mode in :term
-  --nnoremap( '<SPACE>',    '<Nop>')                                            -- Leader key stuff 
+  --nnoremap( '<SPACE>',    '<Nop>')                                            -- Leader key stuff
   g.mapleader = '\\'                                                            -- [...]
 
 -- {{{ Leader key keybinds
@@ -221,6 +183,11 @@
   vnoremaps('<C-_>',      '<Plug>(comment_toggle_blockwise_visual)<CR>')        -- Line comment visual
 -- }}}
 
+-- {{{ Neovide
+  nnoremaps('<C-=>',      ':lua ResizeGuiFont(1)<CR>')
+  nnoremaps('<C-->',      ':lua ResizeGuiFont(-1)<CR>')
+  nnoremaps('<C-BS>',     ':lua ResetGuiFont()<CR>')
+-- }}}
 
 -- {{{ Jaq    (Alt+E; `E` from "Execute")
   nnoremaps('<A-e>',      ':Jaq<CR>')
@@ -230,7 +197,7 @@
   nnoremaps('<A-r>',      ':RnvimrToggle<CR>')
   tnoremaps('<A-r>',      '<C-\\><C-n>:RnvimrToggle<CR>')
 -- }}}
-  
+
 -- {{{ FTerm  (Alt+T; `T` from "Terminal")
   nnoremaps('<A-t>',      ':lua require("FTerm").toggle()<CR>')
   tnoremaps('<A-t>',      '<C-\\><C-n>:lua require("FTerm").toggle()<CR>')
@@ -265,7 +232,57 @@
 -- }}}
 -- }}}
 
--- {{{ Others
+-- {{{ Autocmds
+  -- {{{ Custom tab sizes for specific filetypes
+  augroupc('tab_2spaces')
+  autocmd('FileType',
+  {
+    pattern = { '', 'html', 'lua', 'markdown', 'nginx', 'none', 'python', 'sh', 'text', 'vim', 'yaml', 'zsh' },
+    group   = 'tab_2spaces',
+    command = 'setlocal tabstop=2 shiftwidth=0 softtabstop=0'
+  })
+
+  augroupc('tab_1spaces')
+  autocmd('FileType',
+  {
+    pattern = { 'cdrtoc', 'plaintex', 'tex' },
+    group   = 'tab_1spaces',
+    command = 'setlocal tabstop=1 shiftwidth=0 softtabstop=0'
+  })
+  -- }}}
+
+  -- {{{ Disable background if Neovide is running
+  if not g.neovide then
+    augroupc('no_neovide')
+    autocmd('VimEnter',
+    {
+      pattern = '*',
+      group   = 'no_neovide',
+      command = 'highlight  Normal ctermbg=NONE guibg=NONE'
+    })
+  end
+  -- }}}
+
+  -- {{{ Use same color for cursor line and cursor column
+  augroupc('cursorcolumn')
+  autocmd('VimEnter',
+  {
+    pattern = '*',
+    group   = 'cursorcolumn',
+    command = 'highlight! link CursorColumn CursorLine'
+  })
+  -- }}}
+
+  -- {{{ Use comment color for indent lines
+  augroupc('indentblanklinechar_color')
+  autocmd('VimEnter',
+  {
+    pattern = '*',
+    group   = 'indentblanklinechar_color',
+    command = 'highlight! link IndentBlanklineChar Comment'
+  })
+  -- }}}
+
   -- {{{ Highlight yanks
   augroupc('highlight_yank')
   autocmd('TextYankPost',
@@ -276,7 +293,18 @@
   })
   -- }}}
 
-  -- {{{ Things still in Vimscript
+  -- {{{ Delete trailing spaces on save
+  augroupc('run_on_save')
+  autocmd('BufWritePre',
+  {
+    pattern = '*',
+    group   = 'run_on_save',
+    command = ':%s/\\s\\+$//e'
+  })
+  -- }}}
+-- }}}
+
+-- {{{ Things still in Vimscript
   cmd
   [[
     "syntax on " Make sure syntax highlighting is on by default
@@ -291,7 +319,6 @@
     cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
     cnoreabbrev <expr> Q ((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q'):('W'))
   ]]
-  -- }}}
 -- }}}
 
 -- {{{ Plugins

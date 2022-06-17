@@ -16,7 +16,7 @@ require('nvim-cursorline').setup
   }
 }
 
-vim.g.cursorline_disabled_filetypes = vim.g.buffertypes_to_exclude
-vim.g.cursorline_disabled_buftypes = vim.g.buffertypes_to_exclude
-vim.g.cursorword_disabled_filetypes = vim.g.buffertypes_to_exclude
-vim.g.cursorword_disabled_buftypes = vim.g.buffertypes_to_exclude
+g.cursorline_disabled_filetypes = g.buffertypes_to_exclude
+g.cursorline_disabled_buftypes  = g.buffertypes_to_exclude
+g.cursorword_disabled_filetypes = g.buffertypes_to_exclude
+g.cursorword_disabled_buftypes  = g.buffertypes_to_exclude

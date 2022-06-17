@@ -25,7 +25,7 @@ require("nvim-lsp-installer").setup(
       uninstall_server = "X", -- Keymap to uninstall a server
     },
   },
-  install_root_dir = vim.fn.stdpath "data" .. "/lsp_servers",--path.concat { vim.fn.stdpath "data", "lsp_servers" }, -- The directory in which to install all servers.
+  install_root_dir = fn.stdpath "data" .. "/lsp_servers",--path.concat { vim.fn.stdpath "data", "lsp_servers" }, -- The directory in which to install all servers.
   pip =
   {
     -- These args will be added to `pip install` calls. Note that setting extra args might impact intended behavior

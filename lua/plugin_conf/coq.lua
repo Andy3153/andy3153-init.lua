@@ -3,4 +3,4 @@
 --
 
 -- Enable coq on startup
-  cmd[[COQnow --shut-up]]
+  vim.cmd[[COQnow --shut-up]]

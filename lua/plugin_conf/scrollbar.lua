@@ -65,8 +65,8 @@ require("scrollbar").setup(
         highlight = "Normal",
       },
     },
-    excluded_buftypes = vim.g.buffertypes_to_exclude,
-    excluded_filetypes = vim.g.buffertypes_to_exclude,
+    excluded_buftypes = g.buffertypes_to_exclude,
+    excluded_filetypes = g.buffertypes_to_exclude,
     autocmd =
     {
       render =

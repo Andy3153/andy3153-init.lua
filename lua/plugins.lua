@@ -5,7 +5,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-vim.cmd [[packadd packer.nvim]]
+cmd [[packadd packer.nvim]]
+
+require('plugin_conf/neovide') -- load Neovide config
 
 return require('packer').startup(function(use)
     use
@@ -151,7 +153,7 @@ return require('packer').startup(function(use)
     use
     {
       'nvim-treesitter/nvim-treesitter',                          -- Better syntax highlighting
-      --run = ':TSUpdate', --why won't this work
+      run = ':TSUpdate', --why won't this work
       config   = function() require('plugin_conf/treesitter') end
     }
 

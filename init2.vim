@@ -13,7 +13,7 @@
     let $PACK_FOLDER        = getenv('NVIM_DATA_FOLDER') . "/site/pack/packer/opt/packer.nvim"
     let $AUTOLOAD_FOLDER    = getenv('NVIM_DATA_FOLDER') . "/site/autoload/"
     let $PLUG_FOLDER        = getenv('AUTOLOAD_FOLDER') . "plugged/"
-  
+
   " Buffer types to exclude from various plugins
     let g:buffertypes_to_exclude =
       \[
@@ -35,7 +35,7 @@
       \]
 
   " LSP servers to install
-    let g:lspservers_to_install = 
+    let g:lspservers_to_install =
       \[
       \ 'arduino_language_server',
       \ 'bashls',
@@ -44,11 +44,11 @@
       \ 'dockerls',
       \ 'html',
       \ 'jdtls',
+      \ 'marksman',
       \ 'pylsp',
       \ 'sumneko_lua',
       \ 'texlab',
       \ 'vimls',
-      \ 'zeta_note',
       \]
 " }}}
 
@@ -156,7 +156,7 @@
     nnoremap <silent> <A-K>   :lua require('smart-splits').resize_up()<CR>
     nnoremap <silent> <A-L>   :lua require('smart-splits').resize_right()<CR>
     nnoremap          <A-=>   <C-w><C-=>
-    
+
   " Commenting
     nnoremap <silent> <C-_>   <Plug>(comment_toggle_current_linewise)<CR>
     vnoremap <silent> <C-_>   <Plug>(comment_toggle_blockwise_visual)<CR>
@@ -192,7 +192,7 @@
   " Rnvimr (Alt+R; `R` from "Ranger")
     nnoremap <silent> <A-r>   :RnvimrToggle<CR>
     tnoremap <silent> <A-r>   <C-\><C-n>:RnvimrToggle<CR>
-  
+
   " FTerm  (Alt+T; `T` from "Terminal")
     nnoremap <silent> <A-t>   <CMD>lua require("FTerm").toggle()<CR>
     tnoremap <silent> <A-t>   <C-n><CMD>lua require("FTerm").toggle()<CR>
@@ -202,17 +202,17 @@
     nnoremap <silent> <S-j>   <Plug>GoNSMDown
     nnoremap <silent> <S-k>   <Plug>GoNSMUp
     nnoremap <silent> <S-l>   <Plug>GoNSMRight
-    
+
     vnoremap <silent> <S-h>   <Plug>GoVSMLeft
     vnoremap <silent> <S-j>   <Plug>GoVSMDown
     vnoremap <silent> <S-k>   <Plug>GoVSMUp
     vnoremap <silent> <S-l>   <Plug>GoVSMRight
-    
+
     nnoremap <silent> <C-h>   <Plug>GoNSDLeft
     nnoremap <silent> <C-j>   <Plug>GoNSDDown
     nnoremap <silent> <C-k>   <Plug>GoNSDUp
     nnoremap <silent> <C-l>   <Plug>GoNSDRight
-    
+
     vnoremap <silent> <C-h>   <Plug>GoVSDLeft
     vnoremap <silent> <C-j>   <Plug>GoVSDDown
     vnoremap <silent> <C-k>   <Plug>GoVSDUp
@@ -238,3 +238,21 @@
   cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
   cnoreabbrev <expr> Q ((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q'):('W'))
 " }}}
+
+
+
+
+
+
+" TO BE ADDED IN LUA
+" remove trailing whitespace on save
+  autocmd BufWritePre * :%s/\s\+$//e
+
+" show trailing whitespace
+  set list
+  set listchars=trail:·
+
+" change localleader in terminal buftype to \\ instead of <space>
+" let mapleader      = ' '
+" let maplocalleader = ' '
+" autocmd FileType terminal let maplocalleader = '\\'

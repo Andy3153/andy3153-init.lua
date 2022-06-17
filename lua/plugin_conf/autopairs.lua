@@ -4,7 +4,7 @@
 
 require('nvim-autopairs').setup(
 {
-  disable_filetype = vim.g.buffertypes_to_exclude,
+  disable_filetype = buffertypes_to_exclude,
   disable_in_macro = false,  -- disable when recording or executing a macro
   disable_in_visualblock = false, -- disable when insert after visual block mode
   ignored_next_char = string.gsub([[ [%w%%%'%[%"%.] ]],"%s+", ""),
@@ -20,12 +20,12 @@ require('nvim-autopairs').setup(
 })
 
 
-local remap = vim.api.nvim_set_keymap
+local remap = map
 local npairs = require('nvim-autopairs')
 
 npairs.setup({ map_bs = false, map_cr = false })
 
-vim.g.coq_settings = { keymap = { recommended = false } }
+g.coq_settings = { keymap = { recommended = false } }
 
 -- these mappings are coq recommended mappings unrelated to nvim-autopairs
 remap('i', '<esc>', [[pumvisible() ? "<c-e><esc>" : "<esc>"]], { expr = true, noremap = true })
@@ -37,8 +37,8 @@ remap('i', '<s-tab>', [[pumvisible() ? "<c-p>" : "<bs>"]], { expr = true, norema
 _G.MUtils= {}
 
 MUtils.CR = function()
-  if vim.fn.pumvisible() ~= 0 then
-    if vim.fn.complete_info({ 'selected' }).selected ~= -1 then
+  if fn.pumvisible() ~= 0 then
+    if fn.complete_info({ 'selected' }).selected ~= -1 then
       return npairs.esc('<c-y>')
     else
       return npairs.esc('<c-e>') .. npairs.autopairs_cr()
@@ -50,7 +50,7 @@ end
 remap('i', '<cr>', 'v:lua.MUtils.CR()', { expr = true, noremap = true })
 
 MUtils.BS = function()
-  if vim.fn.pumvisible() ~= 0 and vim.fn.complete_info({ 'mode' }).mode == 'eval' then
+  if fn.pumvisible() ~= 0 and fn.complete_info({ 'mode' }).mode == 'eval' then
     return npairs.esc('<c-e>') .. npairs.autopairs_bs()
   else
     return npairs.autopairs_bs()

@@ -3,7 +3,7 @@
 --
 
 -- Some ASCII art
-vim.g.ascii_nvim_2d =
+local ascii_nvim_2d =
 {
   [[    /‾| /‾/__  ____|‾|  /‾(_)___ ___  ]],
   [[   /  |/ / _ \/ __ \ | / / / __ `__ \ ]],
@@ -11,7 +11,7 @@ vim.g.ascii_nvim_2d =
   [[ /_/ |_/\___/\____/|___/_/_/ /_/ /_/  ]]
 }
 
-vim.g.ascii_nvim_3d =
+local ascii_nvim_3d =
 {
   [[  ___   __    ______   ______   __   __   ________  ___ __ __      ]],
   [[ /__/\ /__/\ /_____/\ /_____/\ /_/\ /_/\ /_______/\/__//_//_/\     ]],
@@ -22,7 +22,7 @@ vim.g.ascii_nvim_3d =
   [[     \__\/ \__\/ \_____\/ \_____\/ \___/_( \________\/ \__\/ \__\/ ]]
 }
 
-vim.g.ascii_nvim_3d_2 =
+local ascii_nvim_3d_2 =
 {
   [[ ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗ ]],
   [[ ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║ ]],
@@ -41,4 +41,4 @@ local startify = require'alpha.themes.startify'
 alpha.setup(startify.config)
 
 -- Set ASCII art
-startify.section.header.val = vim.g.ascii_nvim_3d_2
+startify.section.header.val = ascii_nvim_3d_2
