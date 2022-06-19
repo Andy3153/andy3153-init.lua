@@ -1,4 +1,4 @@
--- vim: fenc=utf-8:ts=2:sw=0:sts=0:sr:et:si:tw=0:fdm=marker:fmr={{{,}}}
+-- vim:fenc=utf-8:ts=2:sw=0:sts=0:sr:et:si:tw=0:fdm=marker:fmr={{{,}}}
 --
 -- init.lua by Andy3153
 -- created   02/06/22 ~ 19:24:15
@@ -237,8 +237,18 @@
 -- }}}
 
 -- {{{ Autocmds
-  -- {{{ Custom tab sizes for specific filetypes
+  -- {{{ --Augroups--
   augroupc('tab_2spaces')
+  augroupc('tab_1spaces')
+  augroupc('latex_fmr')
+  augroupc('highlight_yank')
+  augroupc('run_on_save')
+  augroupc('no_neovide')
+  augroupc('cursorcolumn')
+  augroupc('indentblanklinechar_color')
+  -- }}}
+
+  -- {{{ Custom tab sizes for specific filetypes
   autocmd('FileType',
   {
     pattern = { '', 'html', 'lua', 'markdown', 'nginx', 'none', 'python', 'sh', 'text', 'vim', 'yaml', 'zsh' },
@@ -246,7 +256,6 @@
     command = 'setlocal tabstop=2 shiftwidth=0 softtabstop=0'
   })
 
-  augroupc('tab_1spaces')
   autocmd('FileType',
   {
     pattern = { 'cdrtoc', 'plaintex', 'tex' },
@@ -256,7 +265,6 @@
   -- }}}
 
   -- {{{ Custom foldmarker for LaTeX
-  augroupc('latex_fmr')
   autocmd('FileType',
   {
     pattern = { 'cdrtoc', 'plaintex', 'tex' },
@@ -265,9 +273,35 @@
   })
   -- }}}
 
+  -- {{{ Highlight yanks
+  autocmd('TextYankPost',
+  {
+    pattern = '*',
+    group   = 'highlight_yank',
+    command = 'silent! lua vim.highlight.on_yank{ higroup="IncSearch", timeout=200 }'
+  })
+  -- }}}
+
+  -- {{{ Delete trailing spaces on save
+  autocmd('BufWritePre',
+  {
+    pattern = '*',
+    group   = 'run_on_save',
+    command = ':%s/\\s\\+$//e'
+  })
+  -- }}}
+
+  -- {{{ Add modeline on save
+  autocmd('BufWritePre',
+  {
+    pattern = '*',
+    group   = 'run_on_save',
+    command = ':lua insertModeline()'
+  })
+  -- }}}
+
   -- {{{ Disable background if Neovide is running
   if not g.neovide then
-    augroupc('no_neovide')
     autocmd('VimEnter',
     {
       pattern = '*',
@@ -278,7 +312,6 @@
   -- }}}
 
   -- {{{ Use same color for cursor line and cursor column
-  augroupc('cursorcolumn')
   autocmd('VimEnter',
   {
     pattern = '*',
@@ -288,32 +321,11 @@
   -- }}}
 
   -- {{{ Use comment color for indent lines
-  augroupc('indentblanklinechar_color')
   autocmd('VimEnter',
   {
     pattern = '*',
     group   = 'indentblanklinechar_color',
     command = 'highlight! link IndentBlanklineChar Comment'
-  })
-  -- }}}
-
-  -- {{{ Highlight yanks
-  augroupc('highlight_yank')
-  autocmd('TextYankPost',
-  {
-    pattern = '*',
-    group   = 'highlight_yank',
-    command = 'silent! lua vim.highlight.on_yank{ higroup="IncSearch", timeout=200 }'
-  })
-  -- }}}
-
-  -- {{{ Delete trailing spaces on save
-  augroupc('run_on_save')
-  autocmd('BufWritePre',
-  {
-    pattern = '*',
-    group   = 'run_on_save',
-    command = ':%s/\\s\\+$//e'
   })
   -- }}}
 -- }}}
@@ -337,12 +349,10 @@
       spaceIfNeeded = " "
     end
 
-
-
     local modelineElements =                                           -- Settings to save inside the modeline
     {
-      " vim:",
-      " fenc=" .. fileencoding,
+      " vim",
+      ":fenc=" .. fileencoding,
       ":ts="   .. opt.tabstop:get(),
       ":sw="   .. opt.shiftwidth:get(),
       ":sts="  .. opt.softtabstop:get(),
@@ -369,9 +379,7 @@
     local currentLine = api.nvim_buf_get_lines(buffer, 0, 1, true)[1]  -- Get current first line to check
 
     if(currentLine == modeline) then
-      -- if modeline exists
-      print("Modeline already exists.")
-
+      -- if modeline exists (nothing)
     elseif(string.match(currentLine, "vim:")) then
       -- if different modeline exists
       api.nvim_buf_set_lines(0, 0, 1, true, { modeline })
