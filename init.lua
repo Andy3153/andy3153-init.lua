@@ -1,4 +1,4 @@
--- vim:fileencoding=utf-8:foldmethod=marker:foldmarker={{{,}}}
+-- vim: fenc=utf-8:ts=2:sw=0:sts=0:sr:et:si:tw=0:fdm=marker:fmr={{{,}}}
 --
 -- init.lua by Andy3153
 -- created   02/06/22 ~ 19:24:15
@@ -6,12 +6,13 @@
 
 -- {{{ Variables
   -- {{{ Neovim function shorthands
-  augroup = vim.api.nvim_create_augroup
-  autocmd = vim.api.nvim_create_autocmd
+  api     = vim.api
+  augroup = api.nvim_create_augroup
+  autocmd = api.nvim_create_autocmd
   cmd     = vim.cmd
   fn      = vim.fn
   g       = vim.g
-  map     = vim.api.nvim_set_keymap
+  map     = api.nvim_set_keymap
   opt     = vim.opt
   -- }}}
 
@@ -115,6 +116,7 @@
   opt.showcmd        = true           -- Shows commands
   opt.list           = true           -- Enable showing special characters
   opt.listchars      = 'trail:·'      -- Special characters to show
+  opt.textwidth      = 0              -- Length after which text should be broken into newlines
   opt.tabstop        = 4              -- Length of <TAB>
   opt.shiftwidth     = 0              -- Length when shifting text (<<, >> and == commands) (0 for ‘tabstop’)
   opt.softtabstop    = 0              -- Length when editing text (0 for ‘tabstop’, -1 for ‘shiftwidth’)
@@ -142,6 +144,8 @@
   nnoremaps('<leader>t',  ':lua require("FTerm").toggle()<CR>')                 -- FTerm  (<leader>t; `T` from "Terminal")
   tnoremaps('<leader>t',  '<C-n>:lua require("FTerm").toggle()<CR>')            -- [...]
   nnoremaps('<leader>n',  ':Alpha<CR>')                                         -- Alpha (homepage)
+
+  nnoremaps('<leader>m',  ':lua insertModeline()<CR>')                          -- Insert modeline in file
 -- }}}
 
 -- {{{ Splits
@@ -301,6 +305,64 @@
     group   = 'run_on_save',
     command = ':%s/\\s\\+$//e'
   })
+  -- }}}
+-- }}}
+
+-- {{{ Modeline
+  -- {{{ Generate modeline
+  function generateModeline()
+    local commentString    = opt.commentstring:get()                   -- Get commentstring for current filetype
+    local spaceIfNeeded    = ""
+
+    -- Insert space at the end of the modeline if commentstring is a blockcomment
+    if(string.match(commentString, "%%s(.*)") ~= "") then
+      spaceIfNeeded = " "
+    end
+
+    local modelineElements =                                           -- Settings to save inside the modeline
+    {
+      " vim:",
+      " fenc=" .. opt.fileencoding:get(),
+      ":ts="   .. opt.tabstop:get(),
+      ":sw="   .. opt.shiftwidth:get(),
+      ":sts="  .. opt.softtabstop:get(),
+      ":sr",
+      ":et",
+      ":si",
+      ":tw="   .. opt.textwidth:get(),
+      ":fdm="  .. opt.foldmethod:get(),
+      ":fmr="  .. opt.foldmarker:get()[1] .. "," .. opt.foldmarker:get()[2],
+      spaceIfNeeded,
+    }
+
+    local modelineConcat   = table.concat(modelineElements)            -- Concatenate the table values
+    local modeline         = commentString:gsub("%%s", modelineConcat) -- Place modeline in commentstring correctly
+
+    return modeline
+  end
+  -- }}}
+
+  -- {{{ Insert modeline in buffer
+  function insertModeline()
+    local modeline    = generateModeline()                                 -- Generate modeline
+    local buffer      = api.nvim_win_get_buf(0)                       -- Get current buffer
+    local currentLine = api.nvim_buf_get_lines(buffer, 0, 1, true)[1] -- Get current first line to check
+
+    if(currentLine == modeline) then
+      -- if modeline exists
+      print("Modeline already exists.")
+
+    elseif(string.match(currentLine, "vim:")) then
+      -- if different modeline exists
+      api.nvim_buf_set_lines(0, 0, 1, true, { modeline })
+      print("Changed modeline.")
+
+    else
+      -- if modeline doesn't exist
+      api.nvim_buf_set_lines(0, 0, 0, true, { modeline })
+      print("Inserted modeline.")
+    end
+  end
   -- }}}
 -- }}}
 
