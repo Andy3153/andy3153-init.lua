@@ -255,6 +255,16 @@
   })
   -- }}}
 
+  -- {{{ Custom foldmarker for LaTeX
+  augroupc('latex_fmr')
+  autocmd('FileType',
+  {
+    pattern = { 'cdrtoc', 'plaintex', 'tex' },
+    group   = 'latex_fmr',
+    command = 'setlocal foldmarker=<<<,>>>'
+  })
+  -- }}}
+
   -- {{{ Disable background if Neovide is running
   if not g.neovide then
     augroupc('no_neovide')
@@ -344,9 +354,9 @@
 
   -- {{{ Insert modeline in buffer
   function insertModeline()
-    local modeline    = generateModeline()                                 -- Generate modeline
-    local buffer      = api.nvim_win_get_buf(0)                       -- Get current buffer
-    local currentLine = api.nvim_buf_get_lines(buffer, 0, 1, true)[1] -- Get current first line to check
+    local modeline    = generateModeline()                             -- Generate modeline
+    local buffer      = api.nvim_win_get_buf(0)                        -- Get current buffer
+    local currentLine = api.nvim_buf_get_lines(buffer, 0, 1, true)[1]  -- Get current first line to check
 
     if(currentLine == modeline) then
       -- if modeline exists
