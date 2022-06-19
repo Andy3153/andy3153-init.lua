@@ -323,16 +323,26 @@
   function generateModeline()
     local commentString    = opt.commentstring:get()                   -- Get commentstring for current filetype
     local spaceIfNeeded    = ""
+    local fileencoding
+
+    -- Use UTF-8 if no fileencoding is set
+    if(opt.fileencoding:get() == "") then
+      fileencoding = "utf-8"
+    else
+      fileencoding = opt.fileencoding:get()
+    end
 
     -- Insert space at the end of the modeline if commentstring is a blockcomment
     if(string.match(commentString, "%%s(.*)") ~= "") then
       spaceIfNeeded = " "
     end
 
+
+
     local modelineElements =                                           -- Settings to save inside the modeline
     {
       " vim:",
-      " fenc=" .. opt.fileencoding:get(),
+      " fenc=" .. fileencoding,
       ":ts="   .. opt.tabstop:get(),
       ":sw="   .. opt.shiftwidth:get(),
       ":sts="  .. opt.softtabstop:get(),
