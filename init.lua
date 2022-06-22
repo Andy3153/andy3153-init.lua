@@ -1,4 +1,4 @@
--- vim:fenc=utf-8:ts=2:sw=0:sts=0:sr:et:si:tw=0:fdm=marker:fmr={{{,}}}
+-- vim: set fenc=utf-8 ts=2 sw=0 sts=0 sr et si tw=0 fdm=marker fmr={{{,}}}:
 --
 -- init.lua by Andy3153
 -- created   02/06/22 ~ 19:24:15
@@ -53,21 +53,21 @@
   -- {{{ Buffertypes to exclude
   buffertypes_to_exclude =
   {
-    'help',
-    'terminal',
     'alpha',
-    'packer',
+    'FTerm',
+    'help',
+    'lsp-installer',
     'lspinfo',
+    'nvchad_cheatsheet',
+    'packer',
+    'prompt',
+    'rnvimr',
+    'startify',
+    'TelescopePrompt',
     'TelescopePrompt',
     'TelescopeResults',
-    'nvchad_cheatsheet',
-    'lsp-installer',
-    'startify',
+    'terminal',
     'vim-plug',
-    'rnvimr',
-    'prompt',
-    'TelescopePrompt',
-    'FTerm'
   }
   -- }}}
 
@@ -351,17 +351,18 @@
 
     local modelineElements =                                           -- Settings to save inside the modeline
     {
-      " vim",
-      ":fenc=" .. fileencoding,
-      ":ts="   .. opt.tabstop:get(),
-      ":sw="   .. opt.shiftwidth:get(),
-      ":sts="  .. opt.softtabstop:get(),
-      ":sr",
-      ":et",
-      ":si",
-      ":tw="   .. opt.textwidth:get(),
-      ":fdm="  .. opt.foldmethod:get(),
-      ":fmr="  .. opt.foldmarker:get()[1] .. "," .. opt.foldmarker:get()[2],
+      " vim: set",
+      " fenc=" .. fileencoding,
+      " ts="   .. opt.tabstop:get(),
+      " sw="   .. opt.shiftwidth:get(),
+      " sts="  .. opt.softtabstop:get(),
+      " sr",
+      " et",
+      " si",
+      " tw="   .. opt.textwidth:get(),
+      " fdm="  .. opt.foldmethod:get(),
+      " fmr="  .. opt.foldmarker:get()[1] .. "," .. opt.foldmarker:get()[2],
+      ":",
       spaceIfNeeded,
     }
 
