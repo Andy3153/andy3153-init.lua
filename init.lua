@@ -91,40 +91,50 @@
 -- }}}
 
 -- {{{ Basic settings
-  opt.number         = true           -- Line numbering
-  opt.relativenumber = true           -- Relative line numbering
-  opt.compatible     = false          -- Disable Vi compatibility
-  opt.mouse          = 'a'            -- Enable mouse support
+  local options =                     -- Option list
+  {
+    number         = true,            -- Line numbering
+    relativenumber = true,            -- Relative line numbering
+    compatible     = false,           -- Disable Vi compatibility
+    mouse          = 'a',             -- Enable mouse support
+    showmode       = false,           -- Disable default mode showing since we use a statusbar
+    shellcmdflag   = '-ic',           -- Make shell interactive
+    cursorline     = true,            -- Highlight current line
+    cursorcolumn   = true,            -- Highlight current column
+    undofile       = true,            -- Undo persistence
+    showmatch      = true,            -- Show matching bracket
+    incsearch      = true,            -- Starts searching as soon as typing
+    ignorecase     = true,            -- Ignore letter case when searching
+    smartcase      = true,            -- Case insentive unless capitals used in search
+    termguicolors  = true,            -- Required by nvim-colorizer
+    foldmethod     = 'marker',        -- Fold code
+    foldlevel      = 0,               -- Keep folds closed
+    signcolumn     = 'yes',           -- Keep signcolumn always on
+    splitbelow     = true,            -- Open split below
+    splitright     = true,            -- Open vsplit on right
+    linebreak      = true,            -- Break lines at spaces
+    modeline       = true,            -- Enable modelines
+    showcmd        = true,            -- Shows commands
+    list           = true,            -- Enable showing special characters
+    listchars      = 'trail:·',       -- Special characters to show
+    textwidth      = 0,               -- Length after which text should be broken into newlines
+    title          = true,            -- Use titlestring as title of window
+    titlestring    = '%f',            -- Window title
+    tabstop        = 4,               -- Length of <TAB>
+    shiftwidth     = 0,               -- Length when shifting text (<<, >> and == commands) (0 for ‘tabstop’)
+    softtabstop    = 0,               -- Length when editing text (0 for ‘tabstop’, -1 for ‘shiftwidth’)
+    shiftround     = true,            -- Round indentation to multiples of 'shiftwidth',when shifting text
+    expandtab      = true,            -- Use spaces instead of <TAB>
+    autoindent     = true,            -- Reproduce the indentation of the previous line
+    smartindent    = true,            -- Increase the indenting level after ‘{’, decrease it after ‘}’
+  }
+
   opt.clipboard:append('unnamedplus') -- Use system clipboard (REQUIRES xclip or wl-clipboard)
-  opt.showmode       = false          -- Disable default mode showing since we use a statusbar
-  opt.shellcmdflag   = '-ic'          -- Make shell interactive
-  opt.cursorline     = true           -- Highlight current line
-  opt.cursorcolumn   = true           -- Highlight current column
-  opt.undofile       = true           -- Undo persistence
-  opt.showmatch      = true           -- Show matching bracket
-  opt.incsearch      = true           -- Starts searching as soon as typing
-  opt.ignorecase     = true           -- Ignore letter case when searching
-  opt.smartcase      = true           -- Case insentive unless capitals used in search
-  opt.termguicolors  = true           -- Required by nvim-colorizer
-  opt.foldmethod     = 'marker'       -- Fold code
-  opt.foldlevel      = 99             -- Max nested fold count
-  opt.signcolumn     = 'yes'          -- Keep signcolumn always on
-  opt.splitbelow     = true           -- Open split below
-  opt.splitright     = true           -- Open vsplit on right
-  opt.linebreak      = true           -- Break lines at spaces
-  opt.modeline       = true           -- Enable modelines
-  opt.showcmd        = true           -- Shows commands
-  opt.list           = true           -- Enable showing special characters
-  opt.listchars      = 'trail:·'      -- Special characters to show
-  opt.textwidth      = 0              -- Length after which text should be broken into newlines
-  opt.tabstop        = 4              -- Length of <TAB>
-  opt.shiftwidth     = 0              -- Length when shifting text (<<, >> and == commands) (0 for ‘tabstop’)
-  opt.softtabstop    = 0              -- Length when editing text (0 for ‘tabstop’, -1 for ‘shiftwidth’)
-  opt.shiftround     = true           -- Round indentation to multiples of 'shiftwidth' when shifting text
-  opt.expandtab      = true           -- Use spaces instead of <TAB>
-  opt.autoindent     = true           -- Reproduce the indentation of the previous line
-  opt.smartindent    = true           -- Increase the indenting level after ‘{’, decrease it after ‘}’
-  cmd("filetype plugin indent on")    -- Use language‐specific plugins for indenting
+
+  -- Setting the options in the array
+  for key, value in pairs(options) do
+    opt[key] = value
+  end
 -- }}}
 
 -- {{{ Colorscheme
@@ -134,8 +144,9 @@
 -- {{{ Keybinds
   nnoremap( 'U',          '<C-r>')                                              -- Undo
   tnoremap( '<ESC><ESC>', '<C-\\><C-N>')                                        -- Normal mode in :term
-  --nnoremap( '<SPACE>',    '<Nop>')                                            -- Leader key stuff
-  g.mapleader = '\\'                                                            -- [...]
+  nnoremap( '<SPACE>',    '<Nop>')                                              -- Unbind space key
+  g.mapleader = '\\'                                                            -- Set Leader key
+  nmap(     '<SPACE>',    '<leader>')                                           -- Set secondary normal mode Leader key
 
 -- {{{ Leader key keybinds
   nnoremaps('<leader>e',  ':Jaq<CR>')                                           -- Jaq    (<leader>e; `E` from "Execute")
@@ -398,7 +409,9 @@
 -- {{{ Things still in Vimscript
   cmd
   [[
-    "syntax on " Make sure syntax highlighting is on by default
+    "syntax on                " Make sure syntax highlighting is on by default
+
+    filetype plugin indent on " Use language‐specific plugins for indenting
 
     " Colorscheme
     try
@@ -407,8 +420,13 @@
     endtry
 
     " Abbreviations
+    " Make 'w' and 'q' case insensitive
     cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
     cnoreabbrev <expr> Q ((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q'):('W'))
+
+    " Make help window open on the right
+    cnoreabbrev h vert h
+    cnoreabbrev help vert help
   ]]
 -- }}}
 
