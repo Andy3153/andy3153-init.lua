@@ -137,10 +137,6 @@
   end
 -- }}}
 
--- {{{ Colorscheme
-  --g.colors_name = 'catppuccin' -- Set colorscheme
--- }}}
-
 -- {{{ Keybinds
   nnoremap( 'U',          '<C-r>')                                              -- Undo
   tnoremap( '<ESC><ESC>', '<C-\\><C-N>')                                        -- Normal mode in :term
@@ -155,8 +151,10 @@
   nnoremaps('<leader>t',  ':lua require("FTerm").toggle()<CR>')                 -- FTerm  (<leader>t; `T` from "Terminal")
   tnoremaps('<leader>t',  '<C-n>:lua require("FTerm").toggle()<CR>')            -- [...]
   nnoremaps('<leader>n',  ':Alpha<CR>')                                         -- Alpha (homepage)
-
   nnoremaps('<leader>m',  ':lua insertModeline()<CR>')                          -- Insert modeline in file
+  nnoremaps('<leader>/',  ':let @/=""<CR>:echo "Search cleared."<CR>' )         -- Clear search
+  nnoremaps('<leader>:',  ':<C-f>')                                             -- Open command in editor
+  nnoremaps('<leader>;',  ':<C-f>')                                             -- [...]
 -- }}}
 
 -- {{{ Splits
