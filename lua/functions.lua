@@ -52,7 +52,9 @@
     local currentLine = api.nvim_buf_get_lines(buffer, 0, 1, true)[1]  -- Get current first line to check
 
     if(currentLine == modeline) then
-      -- if modeline exists (nothing)
+      -- if modeline exists
+      print("Modeline already exists.")
+
     elseif(string.match(currentLine, "vim:")) then
       -- if different modeline exists
       api.nvim_buf_set_lines(0, 0, 1, true, { modeline })
