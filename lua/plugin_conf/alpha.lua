@@ -4,9 +4,9 @@
 --
 
 -- {{{ Function shorthands
-local alpha = require('alpha')
-local theme = require('alpha.themes.dashboard')
---local theme = require('alpha.themes.startify')
+local alpha   = require('alpha')
+local fortune = require("alpha.fortune")
+local theme   = require('alpha.themes.dashboard') -- or alpha.themes.startify
 -- }}}
 
 -- {{{ Some ASCII art
@@ -71,7 +71,8 @@ local ascii_ghost =
 -- }}}
 
 alpha.setup(theme.config)                         -- Theme
-theme.section.header.val = ascii_bloody  -- Header
+theme.section.header.val = ascii_bloody           -- Header
+theme.section.footer.val = fortune()              -- Footer
 
 theme.section.buttons.val =                       -- Menu
 {
