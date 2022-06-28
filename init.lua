@@ -152,7 +152,9 @@
   tnoremaps('<leader>t',  '<C-n>:lua require("FTerm").toggle()<CR>')            -- [...]
   nnoremaps('<leader>n',  ':Alpha<CR>')                                         -- Alpha (homepage)
   nnoremaps('<leader>m',  ':lua insertModeline()<CR>')                          -- Insert modeline in file
-  nnoremaps('<leader>/',  ':let @/=""<CR>:echo "Search cleared."<CR>' )         -- Clear search
+  nnoremaps('<leader>/',  ':lua clearSearch()<CR>' )                            -- Clear search register
+  nnoremaps('<leader>"',  ':lua clearAllRegisters()<CR>' )                      -- Clear all registers
+  nnoremaps('<leader>\'', ':lua clearAllMarks()<CR>' )                          -- Clear all marks
   nnoremaps('<leader>:',  ':<C-f>')                                             -- Open command in editor
   nnoremaps('<leader>;',  ':<C-f>')                                             -- [...]
 -- }}}
@@ -339,6 +341,7 @@
   -- }}}
 -- }}}
 
+-- {{{ Functions
 -- {{{ Modeline
   -- {{{ Generate modeline
   function generateModeline()
@@ -404,6 +407,34 @@
   -- }}}
 -- }}}
 
+-- {{{ Clear search register
+function clearSearch()
+  fn.setreg('/', {})
+  print("Search cleared.")
+end
+-- }}}
+
+-- {{{ Clear all registers
+function clearAllRegisters()
+  local registers = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"*+'
+
+  registers:gsub('.', function(register) -- take all chars and run them against the command
+    fn.setreg(register, {})
+  end)
+
+  print("All registers have been cleared.")
+end
+-- }}}
+
+-- {{{ Clear all marks
+function clearAllMarks()
+  cmd[[ delmarks! | delmarks a-zA-Z0-9 ]]
+
+  print("All marks have been cleared.")
+end
+-- }}}
+-- }}}
+
 -- {{{ Things still in Vimscript
   cmd
   [[
@@ -423,7 +454,7 @@
     cnoreabbrev <expr> Q ((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q'):('W'))
 
     " Make help window open on the right
-    cnoreabbrev h vert h
+    cnoreabbrev h vert help
     cnoreabbrev help vert help
   ]]
 -- }}}
