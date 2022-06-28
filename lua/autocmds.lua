@@ -12,6 +12,7 @@
   augroupc('no_neovide')
   augroupc('cursorcolumn')
   augroupc('indentline_color')
+  augroupc('init_lua')
 -- }}}
 
 -- {{{ Custom tab sizes for specific filetypes
@@ -92,5 +93,23 @@
     pattern = '*',
     group   = 'indentline_color',
     command = 'highlight! link IndentBlanklineChar Comment'
+  })
+-- }}}
+
+-- {{{ For init.lua
+  -- Add the lua folder to the path
+  autocmd('BufReadPost',
+  {
+    pattern = 'init.lua',
+    group   = 'init_lua',
+    command = 'setlocal path+=./lua'
+  })
+
+  -- Add modeline element
+  autocmd('BufReadPost',
+  {
+    pattern = 'init.lua',
+    group   = 'init_lua',
+    command = 'lua customModelineElements = customModelineElements .. " pa+=./lua"'
   })
 -- }}}

@@ -1,3 +1,4 @@
+<!-- vim: set fenc=utf-8 ts=2 sw=0 sts=0 sr et si tw=0 fdm=marker fmr={{{,}}}: -->
 # andy3153-init.lua
 This is my init.lua and all the plugins that I use with it.
 

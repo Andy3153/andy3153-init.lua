@@ -4,6 +4,8 @@
 --
 
 -- {{{ Generate modeline
+  customModelineElements = "" -- Store some modeline elements to be added by other sources
+
   function generateModeline()
     local commentString    = opt.commentstring:get()                   -- Get commentstring for current filetype
     local spaceIfNeeded    = ""
@@ -34,6 +36,7 @@
       " tw="   .. opt.textwidth:get(),
       " fdm="  .. opt.foldmethod:get(),
       " fmr="  .. opt.foldmarker:get()[1] .. "," .. opt.foldmarker:get()[2],
+      customModelineElements,
       ":",
       spaceIfNeeded,
     }
