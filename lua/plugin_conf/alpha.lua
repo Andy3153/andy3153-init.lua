@@ -72,8 +72,8 @@ local ascii_ghost =
 
 -- {{{ Settings
 alpha.setup(theme.config)                         -- Theme
-theme.section.header.val = ascii_bloody           -- Header
-theme.section.footer.val = fortune()              -- Footer
+theme.section.header.val  = ascii_bloody           -- Header
+theme.section.footer.val  = fortune()              -- Footer
 theme.section.buttons.val =                       -- Menu
 {
   theme.button('e',       '  New file',        ':enew<CR>'),
