@@ -1,14 +1,24 @@
+-- vim: set fenc=utf-8 ts=2 sw=0 sts=0 sr et si tw=0 fdm=marker fmr={{{,}}}:
 --
 -- alpha-nvim configuration
 --
 
--- Some ASCII art
+-- {{{ Function shorthands
+local alpha = require('alpha')
+local theme = require('alpha.themes.dashboard')
+--local theme = require('alpha.themes.startify')
+-- }}}
+
+-- {{{ Some ASCII art
+-- https://textkool.com/en/ascii-art-generator
+-- https://texteditor.com/multiline-text-art/
+
 local ascii_nvim_2d =
 {
   [[    /‾| /‾/__  ____|‾|  /‾(_)___ ___  ]],
   [[   /  |/ / _ \/ __ \ | / / / __ `__ \ ]],
   [[  / /|  /  __/ /_/ / |/ / / / / / / / ]],
-  [[ /_/ |_/\___/\____/|___/_/_/ /_/ /_/  ]]
+  [[ /_/ |_/\___/\____/|___/_/_/ /_/ /_/  ]],
 }
 
 local ascii_nvim_3d =
@@ -19,26 +29,55 @@ local ascii_nvim_3d =
   [[  \:. `-\  \ \\:\/___/\\:\ \ \ \\:\ \\ \ \  \::\ \  \:.      \ \   ]],
   [[   \:. _    \ \\::___\/_\:\ \ \ \\:\_/.:\ \ _\::\ \__\:.\-/\  \ \  ]],
   [[    \. \`-\  \ \\:\____/\\:\_\ \ \\ ..::/ //__\::\__/\\. \  \  \ \ ]],
-  [[     \__\/ \__\/ \_____\/ \_____\/ \___/_( \________\/ \__\/ \__\/ ]]
+  [[     \__\/ \__\/ \_____\/ \_____\/ \___/_( \________\/ \__\/ \__\/ ]],
 }
 
-local ascii_nvim_3d_2 =
+local ascii_shadow =
 {
   [[ ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗ ]],
   [[ ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║ ]],
   [[ ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║ ]],
   [[ ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║ ]],
   [[ ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║ ]],
-  [[ ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝ ]]
+  [[ ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝ ]],
 }
 
--- Settiings
-local alpha = require'alpha'
-local startify = require'alpha.themes.startify'
+local ascii_bloody =
+{
+[[  ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓ ]],
+[[  ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒ ]],
+[[ ▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░ ]],
+[[ ▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██  ]],
+[[ ▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒ ]],
+[[ ░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░ ]],
+[[ ░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░ ]],
+[[    ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░    ]],
+[[          ░    ░  ░    ░ ░        ░   ░         ░    ]],
+[[                                 ░                   ]],
+}
 
+local ascii_ghost =
+{
+  [[ ▀███▄   ▀███▀███▀▀▀███  ▄▄█▀▀██▄ ▀████▀   ▀███▀████▀████▄     ▄███▀ ]],
+  [[   ███▄    █   ██    ▀█▄██▀    ▀██▄ ▀██     ▄█   ██   ████    ████   ]],
+  [[   █ ███   █   ██   █  ██▀      ▀██  ██▄   ▄█    ██   █ ██   ▄█ ██   ]],
+  [[   █  ▀██▄ █   ██████  ██        ██   ██▄  █▀    ██   █  █▓  █▀ ██   ]],
+  [[   █   ▀██▄▓   ██   █  ▄█        ██   ▀▓█ ▓▀     █▓   ▓  █▓▄█▀  ██   ]],
+  [[   ▓     ▓█▓   █▓     ▄███      ██▀    ▓██▄      █▓   ▓  ▀▓█▀   ██   ]],
+  [[   ▓   ▀▓▓▓▓   ▓▓   ▓  ▓██      ▓█▓    ▓▓ ▓▀     ▓▓   ▓  ▓▓▓▓▀  ▓▓   ]],
+  [[   ▓     ▓▓▓   ▓▓     ▓▓█▓▓▓    ▓▓▓    ▓▓▒▒      ▒▓   ▒  ▀▓▓▀   ▓▓   ]],
+  [[ ▒ ▒ ▒    ▒▓▓▒ ▒▒▒▓▒ ▒ ▒ ▒ ▒ ▒ ▒        ▒      ▒▓▒ ▒▒ ▒▒▒ ▒   ▒ ▒▒▒  ]],
+}
+-- }}}
 
--- Set to Startify theme
-alpha.setup(startify.config)
+alpha.setup(theme.config)                         -- Theme
+theme.section.header.val = ascii_bloody  -- Header
 
--- Set ASCII art
-startify.section.header.val = ascii_nvim_3d_2
+theme.section.buttons.val =                       -- Menu
+{
+  theme.button('e',       ' New file',        ':enew<CR>'),
+  theme.button('SPC SPC', ' Recent files',    ':Telescope oldfiles<CR>'),
+  theme.button('cfv',     ' Neovim settings', ':e $MYVIMRC<CR>'),
+  theme.button('cfz',     ' Zsh settings',    ':e $ZDOTDIR/.zshrc<CR>'),
+  theme.button('q',       ' Quit Neovim',     ':qall<CR>'),
+}
