@@ -152,6 +152,12 @@ return require('packer').startup(function(use)
 
     use
     {
+      'nvim-telescope/telescope.nvim',                          -- Fuzzy finder
+      requires = {'nvim-lua/plenary.nvim'}
+    }
+
+    use
+    {
       'nvim-treesitter/nvim-treesitter',                          -- Better syntax highlighting
       run      = ':TSUpdate', --why won't this work
       config   = function() require('plugin_conf/treesitter') end

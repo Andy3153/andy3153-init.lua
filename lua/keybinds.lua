@@ -24,6 +24,8 @@
   nnoremaps('<leader>\'', ':lua clearAllMarks()<CR>' )                          -- Clear all marks
   nnoremaps('<leader>:',  ':<C-f>')                                             -- Open command in editor
   nnoremaps('<leader>;',  ':<C-f>')                                             -- [...]
+  nnoremaps('<leader>cd', ':cd %:p:h<CR>')                                          -- Go in file's current folder
+  nnoremaps('<leader><space>', ':Telescope oldfiles<CR>')                          -- Telescope
 -- }}}
 
 -- {{{ Splits

@@ -10,6 +10,8 @@ See [plugins.vim](../../blob/master/lua/plugins.lua)
   - python3-venv
   - ranger
   - xclip
+  - ripgrep
+  - fd
 
 ## Contributing
 Feel free to give me advice on this, or even help me with it!
