@@ -12,7 +12,7 @@ require('plugin_conf/neovide') -- load Neovide config
 return require('packer').startup(function(use)
     use
     {
-      'wbthomason/packer.nvim'                                  -- Plugin manager
+      'wbthomason/packer.nvim'                                    -- Plugin manager
     }
 
     use
@@ -37,7 +37,7 @@ return require('packer').startup(function(use)
 
     use
     {
-      'kevinhwang91/rnvimr',                                     -- File manager
+      'kevinhwang91/rnvimr',                                      -- File manager
       config   = function() require('plugin_conf/rnvimr') end
     }
 
