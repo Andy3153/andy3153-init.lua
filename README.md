@@ -5,13 +5,25 @@ This is my init.lua and all the plugins that I use with it.
 ## Plugins included:
 See [plugins.vim](../../blob/master/lua/plugins.lua)
 
-## Programs required to install:
+## Programs required to install (in Arch Linux package names):
+### For COQ
+  - python
+  - python-virtualenv
+
+### For Rnvimr
   - pynvim
-  - python3-venv
   - ranger
-  - xclip
+
+### For Telescope
   - ripgrep
   - fd
+
+### For some preinstalled LSP servers
+  - npm
+  - java
+
+### Others
+  - xclip (for using the system clipboard)
 
 ## Contributing
 Feel free to give me advice on this, or even help me with it!
