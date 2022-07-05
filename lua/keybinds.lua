@@ -27,7 +27,7 @@
   nnoremaps('<leader>cd',      ':cd %:p:h | pwd<CR>')                                -- Go in file's current folder
   nnoremaps('<leader><space>', ':Telescope oldfiles<CR>')                            -- Telescope recent files
   nnoremaps('<leader>fo',      ':Telescope oldfiles<CR>')                            -- [...]
-  nnoremaps('<leader>ff',      ':Telescope find_files<CR>')                          -- Telescope file browser
+  nnoremaps('<leader>ff',      ':Telescope find_files hidden=true<CR>')              -- Telescope file browser
   nnoremaps('<leader>fg',      ':Telescope live_grep<CR>')                           -- Telescope search through files in pwd
   nnoremaps('<leader>fb',      ':Telescope buffers<CR>')                             -- Telescope buffers
   nnoremaps('<leader>fh',      ':Telescope help_tags<CR>')                           -- Telescope helpfiles
@@ -55,10 +55,10 @@
   nnoremaps('<leader>K',       ':lua require("smart-splits").resize_up()<CR>')       -- Resize split above
   nnoremaps('<leader>L',       ':lua require("smart-splits").resize_right()<CR>')    -- Resize split to right
   nnoremap( '<leader>=',       '<C-w><C-=>')                                         -- Resize splits equally
-  nnoremaps('<leader>pp',      ':PackerStatus<CR>')
-  nnoremaps('<leader>ps',      ':PackerSync<CR>')
-  nnoremaps('<leader>pi',      ':PackerInstall<CR>')
-  nnoremaps('<leader>pu',      ':PackerUpdate<CR>')
+  nnoremaps('<leader>pp',      ':PackerStatus<CR>')                                  -- Packer status
+  nnoremaps('<leader>ps',      ':PackerSync<CR>')                                    -- Packer sync
+  nnoremaps('<leader>pi',      ':PackerInstall<CR>')                                 -- Packer install
+  nnoremaps('<leader>pu',      ':PackerUpdate<CR>')                                  -- Packer update
 -- }}}
 
 -- {{{ Splits
