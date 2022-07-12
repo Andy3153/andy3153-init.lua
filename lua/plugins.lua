@@ -135,14 +135,14 @@ return require('packer').startup(function(use)
 
     use
     {
-      'lervag/vimtex',                                           -- LaTeX support
-      config   = function() require('plugin_conf/vimtex') end
+      'lewis6991/gitsigns.nvim',                                -- Git signs
+      config   = function() require('plugin_conf/gitsigns') end
     }
 
     use
     {
-      'glacambre/firenvim',                                       -- Neovim in browser
-      run = function() fn['firenvim#install'](0) end
+      'lervag/vimtex',                                           -- LaTeX support
+      config   = function() require('plugin_conf/vimtex') end
     }
 
     use
