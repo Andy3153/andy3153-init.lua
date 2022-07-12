@@ -11,7 +11,7 @@ g.neovide_cursor_vfx_mode = "ripple"    -- cursor effect
 -- Make Ctrl-+ and Ctrl-- work like in a terminal
 g.gui_font_default_size = 8.05          -- default font size
 g.gui_font_size = g.gui_font_default_size
-g.gui_font_face = "Iosevka Term"
+g.gui_font_face = "Iosevka Nerd Font Mono"
 
 RefreshGuiFont = function()
   opt.guifont = string.format("%s:h%s", g.gui_font_face, g.gui_font_size)
