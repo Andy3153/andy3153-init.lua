@@ -25,15 +25,17 @@
   nnoremaps('<leader>:',       ':<C-f>')                                             -- Open command in editor
   nnoremaps('<leader>;',       ':<C-f>')                                             -- [...]
   nnoremaps('<leader>cd',      ':cd %:p:h | pwd<CR>')                                -- Go in file's current folder
-  nnoremaps('<leader><space>', ':Telescope oldfiles<CR>')                            -- Telescope recent files
-  nnoremaps('<leader>fo',      ':Telescope oldfiles<CR>')                            -- [...]
+  nnoremaps('<leader>cd~',     ':cd ~ | pwd<CR>')                                    -- Go in homedir
+  nnoremaps('<leader><space>', ':Telescope oldfiles hidden=true<CR>')                -- Telescope recent files
+  nnoremaps('<leader>fo',      ':Telescope oldfiles hidden=true<CR>')                -- [...]
   nnoremaps('<leader>ff',      ':Telescope find_files hidden=true<CR>')              -- Telescope file browser
   nnoremaps('<leader>fg',      ':Telescope live_grep<CR>')                           -- Telescope search through files in pwd
   nnoremaps('<leader>fb',      ':Telescope buffers<CR>')                             -- Telescope buffers
   nnoremaps('<leader>fh',      ':Telescope help_tags<CR>')                           -- Telescope helpfiles
+  nnoremaps('<leader>fm',      ':Telescope man_pages<CR>')                           -- Telescope manpages
   nnoremaps('<leader>fgs',     ':Telescope git_status<CR>')                          -- Telescope Git status
   nnoremaps('<leader>fv',      ':Telescope treesitter<CR>')                          -- Telescope Treesitter (show vars, functions etc)
-  nnoremaps('<leader>fm',      ':Telescope man_pages<CR>')                          -- Telescope Treesitter (show vars, functions etc)
+  nnoremaps('<leader>f/',      ':Telescope current_buffer_fuzzy_find<CR>')           -- Telescope Treesitter (show vars, functions etc)
   nnoremaps('<leader>.',       ':BufferNext<CR>')                                    -- To next tab
   nnoremaps('<leader>,',       ':BufferPrevious<CR>')                                -- To previous tab
   nnoremaps('<leader>>',       ':BufferMoveNext<CR>')                                -- Move tab to left
