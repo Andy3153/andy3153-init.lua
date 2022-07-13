@@ -5,7 +5,7 @@
 
 -- {{{ Basic keybinds
   nnoremap( 'U',               '<C-r>')                                              -- Undo
-  tnoremap( '<ESC><ESC>',      '<C-\\><C-N>')                                        -- Normal mode in :term
+  --tnoremap( '<ESC><ESC>',      '<C-\\><C-N>')                                        -- Normal mode in :term
   nnoremap( '<SPACE>',         '<Nop>')                                              -- Unbind space key
   g.mapleader = '\\'                                                                 -- Set Leader key
   nmap(     '<SPACE>',         '<leader>')                                           -- Set secondary normal mode Leader key
@@ -15,8 +15,7 @@
   nnoremaps('<leader>e',       ':Jaq<CR>')                                           -- Jaq    (<leader>e; `E` from "Execute")
   nnoremaps('<leader>r',       ':RnvimrToggle<CR>')                                  -- Rnvimr (<leader>r; `R` from "Ranger")
   tnoremaps('<leader>r',       '<C-\\><C-n>:RnvimrToggle<CR>')                       -- [...]
-  nnoremaps('<leader>t',       ':lua require("FTerm").toggle()<CR>')                 -- FTerm  (<leader>t; `T` from "Terminal")
-  tnoremaps('<leader>t',       '<C-n>:lua require("FTerm").toggle()<CR>')            -- [...]
+  nnoremaps('<leader>t',       ':ToggleTerm dir=%:p:h<CR>')                          -- Terminal
   nnoremaps('<leader>n',       ':Alpha<CR>')                                         -- Alpha (homepage)
   nnoremaps('<leader>m',       ':lua insertModeline()<CR>')                          -- Insert modeline in file
   nnoremaps('<leader>/',       ':lua clearSearch()<CR>' )                            -- Clear search register
@@ -36,6 +35,8 @@
   nnoremaps('<leader>fgs',     ':Telescope git_status<CR>')                          -- Telescope Git status
   nnoremaps('<leader>fv',      ':Telescope treesitter<CR>')                          -- Telescope Treesitter (show vars, functions etc)
   nnoremaps('<leader>f/',      ':Telescope current_buffer_fuzzy_find<CR>')           -- Telescope Treesitter (show vars, functions etc)
+  nnoremaps('<leader>ss',      ':SearchSession<CR>')                                 -- Open session searcher
+  nnoremaps('<leader>sp',      ':SaveSession<CR>')                                   -- Save session
   nnoremaps('<leader>.',       ':BufferNext<CR>')                                    -- To next tab
   nnoremaps('<leader>,',       ':BufferPrevious<CR>')                                -- To previous tab
   nnoremaps('<leader>>',       ':BufferMoveNext<CR>')                                -- Move tab to left
@@ -61,6 +62,11 @@
   nnoremaps('<leader>ps',      ':PackerSync<CR>')                                    -- Packer sync
   nnoremaps('<leader>pi',      ':PackerInstall<CR>')                                 -- Packer install
   nnoremaps('<leader>pu',      ':PackerUpdate<CR>')                                  -- Packer update
+
+
+  for i = 1,9,1 do
+    nnoremaps('<leader>' .. i, ':BufferGoto ' .. i .. '<CR>')                      -- Go to buffers 1..9
+  end
 -- }}}
 
 -- {{{ Splits
