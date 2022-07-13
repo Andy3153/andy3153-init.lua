@@ -9,6 +9,6 @@ require('toggleterm').setup(
   hide_numbers    = true,       -- Hide line numbering
   shade_terminals = true,       -- Shade the background
   shading_factor  = '2',        -- How much to shade
-  start_in_insert = true,       -- Don't start in insert mode
-  direction       = 'float',    -- How to start the terminal ( 'vertical' | 'horizontal' | 'tab' | 'float' )
+  start_in_insert = false,      -- Don't start in insert mode
+  direction       = 'vertical', -- How to start the terminal ( 'vertical' | 'horizontal' | 'tab' | 'float' )
 })

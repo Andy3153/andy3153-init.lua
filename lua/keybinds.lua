@@ -15,7 +15,8 @@
   nnoremaps('<leader>e',       ':Jaq<CR>')                                           -- Jaq    (<leader>e; `E` from "Execute")
   nnoremaps('<leader>r',       ':RnvimrToggle<CR>')                                  -- Rnvimr (<leader>r; `R` from "Ranger")
   tnoremaps('<leader>r',       '<C-\\><C-n>:RnvimrToggle<CR>')                       -- [...]
-  nnoremaps('<leader>t',       ':ToggleTerm dir=%:p:h<CR>')                          -- Terminal
+  nnoremaps('<leader>T',       ':ToggleTerm direction=float dir=%:p:h<CR>')          -- Floating terminal
+  nnoremaps('<leader>t',       ':ToggleTerm direction=vertical dir=%:p:h<CR>')       -- Vsplit terminal
   nnoremaps('<leader>n',       ':Alpha<CR>')                                         -- Alpha (homepage)
   nnoremaps('<leader>m',       ':lua insertModeline()<CR>')                          -- Insert modeline in file
   nnoremaps('<leader>/',       ':lua clearSearch()<CR>' )                            -- Clear search register
