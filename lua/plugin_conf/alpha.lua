@@ -81,7 +81,7 @@ theme.section.buttons.val =                       -- Menu
   theme.button('SPC s s', '缾 Sessions',          ':SearchSession<CR>'),
   theme.button('SPC r',   '  Ranger',            ':RnvimrToggle<CR>'),
   theme.button('SPC t',   '  Floating terminal', ':ToggleTerm direction=float dir=%:p:h<CR>'),
-  theme.button('SPC t',   '  Vsplit terminal',   ':ToggleTerm direction=vertical dir=%:p:h<CR>'),
+  theme.button('SPC T',   '  Vsplit terminal',   ':ToggleTerm direction=vertical dir=%:p:h<CR>'),
   theme.button('cfv',     '  Neovim settings',   ':e $MYVIMRC<CR>'),
   theme.button('cfz',     '  Zsh settings',      ':e $ZDOTDIR/.zshrc<CR>'),
   theme.button('q',       '  Quit Neovim',       ':qall<CR>'),
