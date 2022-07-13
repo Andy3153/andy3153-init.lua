@@ -12,7 +12,8 @@
   augroupc('no_neovide')
   augroupc('cursorcolumn')
   augroupc('indentline_color')
-  augroupc('init_lua')
+  --augroupc('init_lua')
+  augroupc('keybinds')
 -- }}}
 
 -- {{{ Custom tab sizes for specific filetypes
@@ -112,4 +113,15 @@
     group   = 'init_lua',
     command = 'lua customModelineElements = customModelineElements .. " pa+=./lua"'
   })]]
+-- }}}
+
+-- {{{ Keybinds for specific plugins
+  -- {{{ Toggleterm
+      autocmd('FileType',
+      {
+        pattern = 'toggleterm',
+        group   = 'keybinds',
+        command = 'tnoremap <buffer> <ESC> <C-\\><C-N> | nnoremap <buffer> <ESC> :ToggleTerm dir=%:p:h<CR>'
+      })
+  -- }}}
 -- }}}

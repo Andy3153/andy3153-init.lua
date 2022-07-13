@@ -34,6 +34,7 @@
     textwidth      = 0,                              -- Length after which text should be broken into newlines
     title          = true,                           -- Use titlestring as title of window
     titlestring    = '%f',                           -- Window title
+    hidden         = true,                           -- Allow hidden buffers
     tabstop        = 4,                              -- Length of <TAB>
     shiftwidth     = 0,                              -- Length when shifting text (<<, >> and == commands) (0 for ‘tabstop’)
     softtabstop    = 0,                              -- Length when editing text (0 for ‘tabstop’, -1 for ‘shiftwidth’)
