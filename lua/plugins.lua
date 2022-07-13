@@ -31,8 +31,9 @@ return require('packer').startup(function(use)
 
     use
     {
-      'numToStr/FTerm.nvim',                                      -- Floating terminal
-      config   = function() require('plugin_conf/fterm') end
+      'akinsho/toggleterm.nvim',                                      -- Terminal
+      tag      = 'v2.*',
+      config   = function() require('plugin_conf/toggleterm') end
     }
 
     use
@@ -153,7 +154,23 @@ return require('packer').startup(function(use)
     use
     {
       'nvim-telescope/telescope.nvim',                          -- Fuzzy finder
-      requires = {'nvim-lua/plenary.nvim'}
+      requires = {'nvim-lua/plenary.nvim'},
+      config   = function() require('plugin_conf/telescope') end
+    }
+
+    use
+    {
+      'rmagatti/session-lens',                                  -- Session searcher
+      --disable  = true,
+      requires =
+      {
+        {
+          'rmagatti/auto-session',
+          config = function() require('plugin_conf/auto_session') end
+        },
+        'nvim-telescope/telescope.nvim'
+      },
+      config   = function() require('plugin_conf/session_lens') end
     }
 
     use
