@@ -78,8 +78,9 @@ theme.section.buttons.val =                       -- Menu
 {
   theme.button('e',       '  New file',        ':enew<CR>'),
   theme.button('SPC SPC', '  Recent files',    ':Telescope oldfiles<CR>'),
+  theme.button('SPC s s', '缾 Sessions',        ':SearchSession<CR>'),
   theme.button('SPC r',   '  Ranger',          ':RnvimrToggle<CR>'),
-  theme.button('SPC t',   '  FTerm',           ':lua require("FTerm").toggle()<CR>'),
+  theme.button('SPC t',   '  Terminal',        ':ToggleTerm dir=%:p:h<CR>'),
   theme.button('cfv',     '  Neovim settings', ':e $MYVIMRC<CR>'),
   theme.button('cfz',     '  Zsh settings',    ':e $ZDOTDIR/.zshrc<CR>'),
   theme.button('q',       '  Quit Neovim',     ':qall<CR>'),
