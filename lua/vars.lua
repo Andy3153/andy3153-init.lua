@@ -65,6 +65,7 @@
     'TelescopePrompt',
     'TelescopeResults',
     'terminal',
+    'toggleterm',
     'vim-plug',
   }
 -- }}}
