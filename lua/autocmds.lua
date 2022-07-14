@@ -121,7 +121,16 @@
       {
         pattern = 'toggleterm',
         group   = 'keybinds',
-        command = 'tnoremap <buffer> <ESC> <C-\\><C-N> | nnoremap <buffer> <ESC> :ToggleTerm dir=%:p:h<CR>'
+        command = 'tnoremap <buffer> <ESC> <C-\\><C-N> | nnoremap <buffer> <silent> <ESC> :ToggleTerm dir=%:p:h<CR>'
+      })
+  -- }}}
+
+  -- {{{ Rnvimr
+      autocmd('FileType',
+      {
+        pattern = 'rnvimr',
+        group   = 'keybinds',
+        command = 'tnoremap <buffer> <ESC> <C-\\><C-N> | nnoremap <buffer> <silent> <ESC> :RnvimrToggle<CR><CR>'
       })
   -- }}}
 -- }}}
