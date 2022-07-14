@@ -156,3 +156,9 @@
   nmap(     'j',               '<Plug>(accelerated_jk_j)')
   nmap(     'k',               '<Plug>(accelerated_jk_k)')
 -- }}}
+
+-- {{{ Quality of life improvements
+  vnoremaps('<', '<gv')  -- Keep selection enabled when using << , >>
+  vnoremaps('>', '>gv')  -- [...]
+  vnoremaps('p', '"_dP') -- Keep same text in yank register when putting over some text
+-- }}}
