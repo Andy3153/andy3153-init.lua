@@ -3,6 +3,20 @@
 -- session-lens config
 --
 
-require('session-lens').setup({})
+require('session-lens').setup(
+{
+  path_display =
+  {
+    "shorten",
+  },
+
+  theme_conf   =
+  {
+    border = true
+  },
+
+  previewer    = false,
+  prompt_title = 'Sessions',
+})
 
 require("telescope").load_extension("session-lens") -- prelaod it
