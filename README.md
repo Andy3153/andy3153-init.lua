@@ -11,7 +11,7 @@ See [plugins.vim](../../blob/master/lua/plugins.lua)
   - python-virtualenv
 
 ### For Rnvimr
-  - pynvim
+  - python-pynvim
   - ranger
 
 ### For Telescope
@@ -20,10 +20,13 @@ See [plugins.vim](../../blob/master/lua/plugins.lua)
 
 ### For some preinstalled LSP servers
   - npm
-  - java
+  - jre-openjdk
 
 ### Others
-  - xclip (for using the system clipboard)
+  - xclip (X11) _OR_ wl-clipboard (wayland) (for using the system clipboard)
+
+### ...or, a simple, copy-pasteable line:
+`python python-virtualenv python-pynvim ranger ripgrep fd npm jre-openjdk xclip wl-clipboard`
 
 ## Contributing
 Feel free to give me advice on this, or even help me with it!
