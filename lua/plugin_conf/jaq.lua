@@ -10,6 +10,7 @@ require('jaq-nvim').setup
       markdown   = "glow '%'",
       python     = "python3 '%'",
       rust       = "rustc '%' && '$fileBase'",
+      c          = "gcc '%' -o '$fileBase' && '$fileBase'",
       cpp        = "g++ '%' -o '$fileBase' && '$fileBase'",
       go         = "go run '%'",
       sh         = "sh '%'",
