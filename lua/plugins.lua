@@ -153,11 +153,6 @@ return require('packer').startup(function(use)
 
     use
     {
-      'kjnh10/ExcelLikeVim'                                     -- Excel in Vim
-    }
-
-    use
-    {
       'nvim-telescope/telescope.nvim',                          -- Fuzzy finder
       requires = {'nvim-lua/plenary.nvim'},
       config   = function() require('plugin_conf/telescope') end
