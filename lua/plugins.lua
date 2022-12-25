@@ -153,6 +153,11 @@ return require('packer').startup(function(use)
 
     use
     {
+      'dhruvasagar/vim-table-mode'                              -- Vim table mode
+    }
+
+    use
+    {
       'nvim-telescope/telescope.nvim',                          -- Fuzzy finder
       requires = {'nvim-lua/plenary.nvim'},
       config   = function() require('plugin_conf/telescope') end
