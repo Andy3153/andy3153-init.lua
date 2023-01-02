@@ -4,4 +4,15 @@
 --
 
 -- Enable coq on startup
-  cmd[[COQnow --shut-up]]
+  pcall(cmd[[COQnow --shut-up]])
+  g.coq_settings =
+  {
+    auto_start = true,
+    clients    =
+    {
+      tree_sitter =
+      {
+        enabled = true
+      },
+    },
+  }
