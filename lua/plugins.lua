@@ -158,6 +158,14 @@ return require('packer').startup(function(use)
 
     use
     {
+      "iamcco/markdown-preview.nvim",
+      run   = "cd app && npm install",
+      ft    = { "markdown" },
+      setup = function() g.mkdp_filetypes = { "markdown" } end,
+    }
+
+    use
+    {
       'nvim-telescope/telescope.nvim',                          -- Fuzzy finder
       requires = {'nvim-lua/plenary.nvim'},
       config   = function() require('plugin_conf/telescope') end
@@ -214,6 +222,12 @@ return require('packer').startup(function(use)
     {
       'neovim/nvim-lspconfig',                                   -- LSP server configuration
       config   = function() require('plugin_conf/lsp-installer') require('plugin_conf/lspconfig')  end
+    }
+
+    use
+    {
+      'TaDaa/vimade',                                            -- Fade inactive views
+      config   = function() require('plugin_conf/vimade') end
     }
 
 --[[
