@@ -74,7 +74,7 @@
     {
       pattern = '*',
       group   = 'no_neovide',
-      command = 'highlight  Normal ctermbg=NONE guibg=NONE'
+      command = 'highlight Normal ctermbg=NONE guibg=NONE'
     })
   end
 -- }}}
