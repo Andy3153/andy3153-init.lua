@@ -9,5 +9,5 @@ require('auto-session').setup(
   auto_session_enable_last_session = false,  -- Loads the last loaded session if session for cwd does not exist
   auto_session_enabled             = true,   -- Enables/disables the plugin's auto save and restore features
   auto_session_create_enabled      = false,  -- Enables/disables the plugin's session auto creation
-  auto_restore_enabled             = false   -- Enables/disables auto restoring
+  auto_restore_enabled             = true    -- Enables/disables auto restoring
 })
