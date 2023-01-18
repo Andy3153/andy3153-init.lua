@@ -30,7 +30,7 @@
     modeline       = true,                           -- Enable modelines
     showcmd        = true,                           -- Shows commands
     list           = true,                           -- Enable showing special characters
-    listchars      = 'trail:·',                      -- Special characters to show
+    listchars      = 'trail:·,tab:>-',               -- Special characters to show
     textwidth      = 0,                              -- Length after which text should be broken into newlines
     title          = true,                           -- Use titlestring as title of window
     titlestring    = '%f',                           -- Window title
