@@ -82,7 +82,7 @@
     'jdtls',
     'marksman',
     'pylsp',
-    'sumneko_lua',
+    'lua_ls',
     'texlab',
     'vimls'
   }
