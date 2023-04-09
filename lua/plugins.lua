@@ -214,14 +214,21 @@ return require('packer').startup(function(use)
 
     use
     {
-      'williamboman/nvim-lsp-installer',                         -- LSP installer
-      config   = function() require('plugin_conf/lsp-installer') end
+      "williamboman/mason.nvim",                                  -- Mason
+      run = ":MasonUpdate",
+      config   = function() require('plugin_conf/mason') end
+    }
+
+    use
+    {
+      'williamboman/mason-lspconfig.nvim',
+      config   = function() require('plugin_conf/mason-lspconfig') end
     }
 
     use
     {
       'neovim/nvim-lspconfig',                                   -- LSP server configuration
-      config   = function() require('plugin_conf/lsp-installer') require('plugin_conf/lspconfig')  end
+      config   = function() require('plugin_conf/mason') require('plugin_conf/lspconfig')  end
     }
 
     use
