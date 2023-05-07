@@ -5,6 +5,7 @@
 
 -- {{{ --Augroups--
   augroupc('tab_2spaces')
+  augroupc('spellcheck')
   augroupc('tab_1spaces')
   augroupc('latex_fmr')
   augroupc('highlight_yank')
@@ -28,6 +29,15 @@
     pattern = { 'cdrtoc', 'plaintex', 'tex' },
     group   = 'tab_1spaces',
     command = 'setlocal tabstop=1 shiftwidth=0 softtabstop=0'
+  })
+-- }}}
+
+-- {{{ Enable spellchecking in specific filetypes
+  autocmd('FileType',
+  {
+    pattern = { '', 'markdown', 'plaintex', 'tex', 'text' },
+    group   = 'spellcheck',
+    command = 'setlocal spell spelllang=en_us,ro'
   })
 -- }}}
 
