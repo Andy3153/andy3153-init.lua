@@ -5,13 +5,16 @@
 -- BufferNext through netrw
 g.netrw_bufsettings = 'noma nomod nonu nowrap ro buflisted'
 
+-- Disable auto setup
+g.barbar_auto_setup = false
+
 -- Set barbar's options
-require('bufferline').setup(
+require('barbar').setup(
 {
   animation = true,  -- Enable/disable animations
   auto_hide = false, -- Enable/disable auto-hiding the tab bar when there is a single buffer
-  tabpages = true,   -- Enable/disable current/total tabpages indicator (top right corner)
-  closable = true,   -- Enable/disable close button
+  tabpages  = true,  -- Enable/disable current/total tabpages indicator (top right corner)
+  closable  = true,  -- Enable/disable close button
   clickable = true,  -- Enables/disable clickable tabs (left-click: go to buffer, middle-click: delete buffer)
 
   -- Configure icons
@@ -26,9 +29,10 @@ require('bufferline').setup(
       right = '',
     },
 
-    modified = { button = '●'},
-    inactive = { button = ''},
-    pinned   = { button = '車'},
+    modified = { button = '●' },
+    inactive = { button = '×' },
+    current  = { button = '×' },
+    pinned   = { button = '車' },
   },
 
   maximum_padding = 1, -- Sets the maximum padding width with which to surround each tab
