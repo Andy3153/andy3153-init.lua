@@ -51,6 +51,7 @@ See [plugins.lua](../../blob/master/lua/plugins.lua)
 
 ## Other dotfiles of mine
 - [Zsh config](https://github.com/Andy3153/andy3153-zshrc)
+- [Hyprland rice](https://github.com/Andy3153/hyprland-rice)
 - [Sway rice](https://github.com/Andy3153/sway-rice)
 
 ## Contributing
