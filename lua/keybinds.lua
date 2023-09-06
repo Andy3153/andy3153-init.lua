@@ -37,7 +37,7 @@
   nnoremaps('<leader>fv',      ':Telescope treesitter<CR>')                          -- Telescope Treesitter (show vars, functions etc)
   nnoremaps('<leader>f/',      ':Telescope current_buffer_fuzzy_find<CR>')           -- Telescope Treesitter (show vars, functions etc)
   nnoremaps('<leader>ss',      ':SearchSession<CR>')                                 -- Open session searcher
-  nnoremaps('<leader>sp',      ':SaveSession<CR>')                                   -- Save session
+  nnoremaps('<leader>sp',      ':SessionSave<CR>')                                   -- Save session
   nnoremaps('<leader>.',       ':BufferNext<CR>')                                    -- To next tab
   nnoremaps('<leader>,',       ':BufferPrevious<CR>')                                -- To previous tab
   nnoremaps('<leader>>',       ':BufferMoveNext<CR>')                                -- Move tab to left
