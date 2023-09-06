@@ -80,9 +80,10 @@
     'dockerls',
     'html',
     'jdtls',
+    'lua_ls',
     'marksman',
     'pylsp',
-    'lua_ls',
+    'rnix',
     'texlab',
     'vimls'
   }
