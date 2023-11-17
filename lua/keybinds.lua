@@ -35,7 +35,8 @@
   nnoremaps('<leader>fm',      ':Telescope man_pages<CR>')                           -- Telescope manpages
   nnoremaps('<leader>fgs',     ':Telescope git_status<CR>')                          -- Telescope Git status
   nnoremaps('<leader>fv',      ':Telescope treesitter<CR>')                          -- Telescope Treesitter (show vars, functions etc)
-  nnoremaps('<leader>f/',      ':Telescope current_buffer_fuzzy_find<CR>')           -- Telescope Treesitter (show vars, functions etc)
+  nnoremaps('<leader>f/',      ':Telescope current_buffer_fuzzy_find<CR>')           -- Telescope fuzzy finder
+  nnoremaps('<leader>fs',      ':Telescope spell_suggest<CR>')                       -- Telescope spell checker suggestions
   nnoremaps('<leader>ss',      ':SearchSession<CR>')                                 -- Open session searcher
   nnoremaps('<leader>sp',      ':SessionSave<CR>')                                   -- Save session
   nnoremaps('<leader>.',       ':BufferNext<CR>')                                    -- To next tab
@@ -158,7 +159,10 @@
 -- }}}
 
 -- {{{ Quality of life improvements
-  vnoremaps('<', '<gv')  -- Keep selection enabled when using << , >>
-  vnoremaps('>', '>gv')  -- [...]
-  vnoremaps('p', '"_dP') -- Keep same text in yank register when putting over some text
+  vnoremaps('<', '<gv')      -- Keep selection enabled when using << , >>
+  vnoremaps('>', '>gv')      -- [...]
+  vnoremaps('p', '"_dP')     -- Keep same text in yank register when putting over some text
+  nmap(     'Ș', ':')        -- Ș replaces : on a Romanian keyboard
+  vmap(     'Ș', ':')        -- Ș replaces : on a Romanian keyboard
+  nmap(     'â', '<leader>') -- â replaces \ on a Romanian keyboard
 -- }}}
