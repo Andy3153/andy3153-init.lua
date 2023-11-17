@@ -31,6 +31,10 @@
     map('i', shortcut, command, { noremap = true, silent = true })
   end
 
+  function vmap(shortcut, command)
+    map('v', shortcut, command, {})
+  end
+
   function vnoremaps(shortcut, command)
     map('v', shortcut, command, { noremap = true, silent = true })
   end
