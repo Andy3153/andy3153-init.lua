@@ -76,7 +76,7 @@ theme.section.header.val  = ascii_bloody           -- Header
 theme.section.footer.val  = fortune()              -- Footer
 theme.section.buttons.val =                       -- Menu
 {
-  theme.button('e',       '  New file',          ':enew<CR>'),
+  theme.button('i',       '  New file',          ':enew<CR>'),
   theme.button('SPC SPC', '  Recent files',      ':Telescope oldfiles<CR>'),
   theme.button('SPC s s', '缾 Sessions',          ':SearchSession<CR>'),
   theme.button('SPC r',   '  Ranger',            ':RnvimrToggle<CR>'),
