@@ -7,7 +7,7 @@ require('session-lens').setup(
 {
   path_display =
   {
-    "shorten",
+    "relative",
   },
 
   theme_conf   =
