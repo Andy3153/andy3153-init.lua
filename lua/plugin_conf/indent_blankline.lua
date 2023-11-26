@@ -2,7 +2,11 @@
 -- indent-blankline.nvim configuration
 --
 
-require("indent_blankline").setup
+require("ibl").setup
 {
-  filetype_exclude = buffertypes_to_exclude -- Exclude filetypes
+  exclude =
+  {
+    filetypes = buffertypes_to_exclude;
+    buftypes =  buffertypes_to_exclude;
+  };
 }
