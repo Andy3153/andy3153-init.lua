@@ -76,14 +76,12 @@ theme.section.header.val  = ascii_bloody           -- Header
 theme.section.footer.val  = fortune()              -- Footer
 theme.section.buttons.val =                       -- Menu
 {
-  theme.button('i',       '  New file',          ':enew<CR>'),
-  theme.button('SPC SPC', '  Recent files',      ':Telescope oldfiles<CR>'),
-  theme.button('SPC s s', '缾 Sessions',          ':SearchSession<CR>'),
-  theme.button('SPC r',   '  Ranger',            ':RnvimrToggle<CR>'),
-  theme.button('SPC T',   '  Floating terminal', ':ToggleTerm direction=float dir=%:p:h<CR>'),
-  theme.button('SPC t',   '  Vsplit terminal',   ':ToggleTerm direction=vertical dir=%:p:h<CR>'),
-  theme.button('cfv',     '  Neovim settings',   ':e $MYVIMRC<CR>'),
-  theme.button('cfz',     '  Zsh settings',      ':e $ZDOTDIR/.zshrc<CR>'),
-  theme.button('q',       '  Quit Neovim',       ':qall<CR>'),
+  theme.button('i',       '  New file',          ':enew<CR>'),
+  theme.button('SPC SPC', '  Recent files',      ':Telescope oldfiles<CR>'),
+  theme.button('SPC s s', '  Sessions',          ':SearchSession<CR>'),
+  theme.button('SPC r',   '  Ranger',            ':RnvimrToggle<CR>'),
+  theme.button('SPC T',   '  Floating terminal', ':ToggleTerm direction=float dir=%:p:h<CR>'),
+  theme.button('SPC t',   '  Vsplit terminal',   ':ToggleTerm direction=vertical dir=%:p:h<CR>'),
+  theme.button('q',       '  Quit Neovim',       ':qall<CR>'),
 }
 -- }}}
