@@ -29,10 +29,10 @@ require('barbar').setup(
       right = '',
     },
 
-    modified = { button = '●' },
-    inactive = { button = '×' },
-    current  = { button = '×' },
-    pinned   = { button = '車' },
+    modified = { button = ' ' },
+    inactive = { button = '' },
+    current  = { button = '' },
+    pinned   = { button = '󰐃' },
   },
 
   maximum_padding = 1, -- Sets the maximum padding width with which to surround each tab
