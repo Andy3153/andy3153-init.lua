@@ -162,7 +162,31 @@ nmap(     'k',               '<Plug>(accelerated_jk_k)')
 vnoremaps('<', '<gv')      -- Keep selection enabled when using << , >>
 vnoremaps('>', '>gv')      -- [...]
 vnoremaps('p', '"_dP')     -- Keep same text in yank register when putting over some text
-nmap(     'Ș', ':')        -- Ș replaces : on a Romanian keyboard
-vmap(     'Ș', ':')        -- Ș replaces : on a Romanian keyboard
-nmap(     'â', '<leader>') -- â replaces \ on a Romanian keyboard
+-- }}}
+
+-- {{{ Romanian keyboard stuff
+nmap(     'ă', '[')
+vmap(     'ă', '[')
+nmap(     'Ă', '{')
+vmap(     'Ă', '{')
+
+nmap(     'î', ']')
+vmap(     'î', ']')
+nmap(     'Î', '}')
+vmap(     'Î', '}')
+
+nmap(     'â', '\\')
+vmap(     'â', '\\')
+nmap(     'Â', '|')
+vmap(     'Â', '|')
+
+nmap(     'ș', ';')
+vmap(     'ș', ';')
+nmap(     'Ș', ':')
+vmap(     'Ș', ':')
+
+nmap(     'ț', '\'')
+vmap(     'ț', '\'')
+nmap(     'Ț', '"')
+vmap(     'Ț', '"')
 -- }}}
