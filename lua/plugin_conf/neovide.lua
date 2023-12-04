@@ -11,9 +11,9 @@ g.neovide_refresh_rate = 240
 g.neovide_refresh_rate_idle = 5
 
 -- Make Ctrl-+ and Ctrl-- work like in a terminal
-g.gui_font_default_size = 8.05            -- default font size
+g.gui_font_default_size = 12              -- default font size
 g.gui_font_size = g.gui_font_default_size
-g.gui_font_face = "Iosevka Nerd Font Mono"
+g.gui_font_face = "IosevkaTerm NF"
 
 RefreshGuiFont = function()
   opt.guifont = string.format("%s:h%s", g.gui_font_face, g.gui_font_size)
