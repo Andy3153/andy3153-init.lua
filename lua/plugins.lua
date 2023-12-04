@@ -166,6 +166,11 @@ return require('packer').startup(function(use)
 
   use
   {
+    'gpanders/nvim-parinfer'                                                                  -- Better S-expressions writing
+  }
+
+  use
+  {
     'nvim-telescope/telescope.nvim',                                                          -- Fuzzy finder
     requires = {'nvim-lua/plenary.nvim'},
     config   = function() require('plugin_conf/telescope') end
