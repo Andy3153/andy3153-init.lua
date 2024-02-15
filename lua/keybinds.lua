@@ -38,7 +38,7 @@ nnoremaps('<leader>fv',      ':Telescope treesitter<CR>')                       
 nnoremaps('<leader>f/',      ':Telescope current_buffer_fuzzy_find<CR>')           -- Telescope fuzzy finder
 nnoremaps('<leader>fs',      ':Telescope spell_suggest<CR>')                       -- Telescope spell checker suggestions
 nnoremaps('<leader>ss',      ':SearchSession<CR>')                                 -- Open session searcher
-nnoremaps('<leader>sp',      ':SessionSave<CR>')                                   -- Save session
+nnoremaps('<leader>sp',      ':cd %:p:h | SessionSave<CR>')                        -- Save session
 nnoremaps('<leader>.',       ':BufferNext<CR>')                                    -- To next tab
 nnoremaps('<leader>,',       ':BufferPrevious<CR>')                                -- To previous tab
 nnoremaps('<leader>>',       ':BufferMoveNext<CR>')                                -- Move tab to left
