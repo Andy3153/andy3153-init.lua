@@ -14,6 +14,7 @@ augroupc('no_neovide')
 augroupc('cursorcolumn')
 augroupc('indentline_color')
 augroupc('keybinds')
+augroupc('lightweight_bg')
 -- }}}
 
 -- {{{ Custom tab sizes for specific filetypes
@@ -68,15 +69,6 @@ autocmd('BufWritePre',
 })
 -- }}}
 
--- {{{ Run :PackerCompile on plugin config change
-autocmd('BufWritePost',
-{
-  pattern = fn.stdpath('config') .. "/lua/plugin_conf/*" ,
-  group   = 'run_on_save',
-  command = ':PackerCompile'
-})
--- }}}
-
 -- {{{ Add modeline on save
 --[[autocmd('BufWritePre',
 {
@@ -84,17 +76,6 @@ autocmd('BufWritePost',
   group   = 'run_on_save',
   command = ':lua insertModeline()'
 })]]
--- }}}
-
--- {{{ Disable background if Neovide is running
-if not g.neovide then
-  autocmd('VimEnter',
-  {
-    pattern = '*',
-    group   = 'no_neovide',
-    command = 'highlight Normal ctermbg=NONE guibg=NONE'
-  })
-end
 -- }}}
 
 -- {{{ Use same color for cursor line and cursor column
@@ -115,7 +96,28 @@ autocmd('VimEnter',
 })
 -- }}}
 
--- {{{ Keybinds for specific plugins
+if not lightweightMode then
+-- {{{ --- Normal mode---
+-- {{{ Run :PackerCompile on plugin config change
+autocmd('BufWritePost',
+{
+  pattern = fn.stdpath('config') .. "/lua/plugin_conf/*" ,
+  group   = 'run_on_save',
+  command = ':PackerCompile'
+})
+-- }}}
+
+-- {{{ Disable background if Neovide is running
+if not g.neovide then
+  autocmd('VimEnter',
+  {
+    pattern = '*',
+    group   = 'no_neovide',
+    command = 'highlight Normal ctermbg=NONE guibg=NONE'
+  })
+end
+-- }}}
+
 -- {{{ Toggleterm
 autocmd('FileType',
 {
@@ -134,3 +136,13 @@ autocmd('FileType',
 })
 -- }}}
 -- }}}
+else
+-- {{{ --- Lightweight mode---
+autocmd('VimEnter',
+{
+  pattern = '*',
+  group   = 'lightweight_bg',
+  command = 'highlight Normal ctermbg=NONE guibg=NONE'
+})
+-- }}}
+end

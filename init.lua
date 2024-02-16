@@ -8,6 +8,9 @@
 -- `gf` on any file in the list to open it in Nvim
 --
 
+-- Enable lightweight mode with plugins disabled
+lightweightMode = false
+
 require('vars')      -- Variables & shortened functions
 require('opts')      -- Options
 require('keybinds')  -- Keymaps

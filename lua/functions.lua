@@ -107,6 +107,8 @@ function getHalfColumnSize()
 end
 -- }}}
 
+if not lightweightMode then
+-- {{{ --- Normal mode---
 -- {{{ Get color from Catppuccin colorscheme
 function getCatppuccinColor(pallete, color)
   --if g.colors_name == "catppuccin" .. "-" .. pallete then
@@ -119,3 +121,5 @@ function getCatppuccinColor(pallete, color)
   --end
 end
 -- }}}
+-- }}}
+end

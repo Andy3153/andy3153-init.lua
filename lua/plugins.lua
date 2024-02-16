@@ -1,5 +1,7 @@
 -- vim: set fenc=utf-8 ts=2 sw=0 sts=0 sr et si tw=0 fdm=marker fmr={{{,}}}:
 
+if not lightweightMode then
+
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
@@ -275,3 +277,5 @@ return require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
+
+end

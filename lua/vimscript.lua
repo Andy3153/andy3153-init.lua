@@ -9,12 +9,6 @@ cmd
 
   filetype plugin indent on " Use language‐specific plugins for indenting
 
-  " Colorscheme
-  try
-    colorscheme catppuccin
-  catch
-  endtry
-
   " Abbreviations
   " Make 'w' and 'q' case insensitive
   cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
@@ -24,3 +18,23 @@ cmd
   cnoreabbrev h vert help
   cnoreabbrev help vert help
 ]]
+
+if not lightweightMode then
+-- {{{ --- Normal mode---
+cmd
+[[
+  " Colorscheme
+  try
+    colorscheme catppuccin
+  catch
+  endtry
+]]
+-- }}}
+else
+-- {{{ --- Normal mode---
+cmd
+[[
+  colorscheme slate
+]]
+-- }}}
+end
