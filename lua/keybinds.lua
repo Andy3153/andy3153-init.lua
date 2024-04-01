@@ -5,7 +5,6 @@
 
 -- {{{ Basic keybinds
 nnoremap( 'U',               '<C-r>')                                              -- Undo
---tnoremap( '<ESC><ESC>',      '<C-\\><C-N>')                                        -- Normal mode in :term
 nnoremap( '<SPACE>',         '<Nop>')                                              -- Unbind space key
 g.mapleader = '\\'                                                                 -- Set Leader key
 nmap(     '<SPACE>',         '<leader>')                                           -- Set secondary normal mode Leader key
@@ -76,12 +75,23 @@ vmap(     'Ț', '"')
 if not lightweightMode then
 -- {{{ --- Normal mode---
 -- {{{ Leader key keybinds
-nnoremaps('<leader>e',       ':Jaq<CR>')                                           -- Jaq    (<leader>e; `E` from "Execute")
-nnoremaps('<leader>r',       ':RnvimrToggle<CR>')                                  -- Rnvimr (<leader>r; `R` from "Ranger")
-tnoremaps('<leader>r',       '<C-\\><C-n>:RnvimrToggle<CR>')                       -- [...]
+--nnoremaps('<leader>r',       ':RnvimrToggle<CR>')                                  -- Rnvimr (<leader>r; `R` from "Ranger")
+--tnoremaps('<leader>r',       '<C-\\><C-n>:RnvimrToggle<CR>')                       -- [...]
+
+nnoremaps('<leader>e',       ':NvimTreeToggle<CR>')                                -- nvim-tree (<leader>e; `E` from "Explorer")
+tnoremaps('<leader>e',       '<C-\\><C-n>:NvimTreeToggle<CR>')                     -- [...]
+nnoremaps('<leader>r',       ':NvimTreeToggle<CR>')
+tnoremaps('<leader>r',       '<C-\\><C-n>:NvimTreeToggle<CR>')
+
+nnoremaps('<leader>t',       ':ToggleTerm direction=horizontal dir=%:p:h<CR>')     -- Split terminal
 nnoremaps('<leader>T',       ':ToggleTerm direction=float dir=%:p:h<CR>')          -- Floating terminal
-nnoremaps('<leader>t',       ':ToggleTerm direction=vertical dir=%:p:h<CR>')       -- Vsplit terminal
+
+nnoremaps('<leader>w',       ':ToggleTerm direction=horizontal dir=%:p:h<CR>'
+                          .. ':NvimTreeToggle<CR>'
+                          .. '<C-w><C-l>')                                         -- IDE mode
+
 nnoremaps('<leader>n',       ':Alpha<CR>')                                         -- Alpha (homepage)
+
 nnoremaps('<leader><space>', ':Telescope oldfiles hidden=true<CR>')                -- Telescope recent files
 nnoremaps('<leader>fo',      ':Telescope oldfiles hidden=true<CR>')                -- [...]
 nnoremaps('<leader>ff',      ':Telescope find_files hidden=true<CR>')              -- Telescope file browser
@@ -93,22 +103,27 @@ nnoremaps('<leader>fgs',     ':Telescope git_status<CR>')                       
 nnoremaps('<leader>fv',      ':Telescope treesitter<CR>')                          -- Telescope Treesitter (show vars, functions etc)
 nnoremaps('<leader>f/',      ':Telescope current_buffer_fuzzy_find<CR>')           -- Telescope fuzzy finder
 nnoremaps('<leader>fs',      ':Telescope spell_suggest<CR>')                       -- Telescope spell checker suggestions
+
 nnoremaps('<leader>ss',      ':SearchSession<CR>')                                 -- Open session searcher
 nnoremaps('<leader>sp',      ':cd %:p:h | SessionSave<CR>')                        -- Save session
+
 nnoremaps('<leader>.',       ':BufferNext<CR>')                                    -- To next tab
 nnoremaps('<leader>,',       ':BufferPrevious<CR>')                                -- To previous tab
 nnoremaps('<leader>>',       ':BufferMoveNext<CR>')                                -- Move tab to left
 nnoremaps('<leader><',       ':BufferMovePrevious<CR>')                            -- Move tab to right
 nnoremaps('<leader>x',       ':BufferClose<CR>')                                   -- Close buffer
 nnoremaps('<leader>X',       ':BufferClose!<CR>')                                  -- Close buffer without saving
+
 nnoremaps('<leader>sh',      ':WinShift left<CR>')                                 -- Move split to left
 nnoremaps('<leader>sj',      ':WinShift down<CR>')                                 -- Move split below
 nnoremaps('<leader>sk',      ':WinShift up<CR>')                                   -- Move split above
 nnoremaps('<leader>sl',      ':WinShift right<CR>')                                -- Move split to right
+
 nnoremaps('<leader>H',       ':lua require("smart-splits").resize_left()<CR>')     -- Resize split to left
 nnoremaps('<leader>J',       ':lua require("smart-splits").resize_down()<CR>')     -- Resize split below
 nnoremaps('<leader>K',       ':lua require("smart-splits").resize_up()<CR>')       -- Resize split above
 nnoremaps('<leader>L',       ':lua require("smart-splits").resize_right()<CR>')    -- Resize split to right
+
 nnoremaps('<leader>pp',      ':Lazy<CR>')                                          -- Plugin status
 nnoremaps('<leader>ps',      ':Lazy sync<CR>')                                     -- Plugin sync
 nnoremaps('<leader>pu',      ':Lazy update<CR>')                                   -- Plugin update
@@ -146,12 +161,13 @@ nnoremaps('<C-_>',           '<Plug>(comment_toggle_current_linewise)<CR>')     
 inoremaps('<C-_>',           '<ESC><Plug>(comment_toggle_current_linewise)<CR>ki') -- Line comment insert
 vnoremaps('<C-_>',           '<Plug>(comment_toggle_blockwise_visual)<CR>')        -- Line comment visual
 -- }}}
--- {{{ Jaq    (Alt+E; `E` from "Execute")
-nnoremaps('<A-e>',           ':Jaq<CR>')
--- }}}
 -- {{{ Rnvimr (Alt+R; `R` from "Ranger")
-nnoremaps('<A-r>',           ':RnvimrToggle<CR>')
-tnoremaps('<A-r>',           '<C-\\><C-n>:RnvimrToggle<CR>')
+--nnoremaps('<A-r>',           ':RnvimrToggle<CR>')
+--tnoremaps('<A-r>',           '<C-\\><C-n>:RnvimrToggle<CR>')
+-- }}}
+-- {{{ nvim-tree (Alt+E; `E` from "Explorer")
+nnoremaps('<A-r>',           ':NvimTreeToggle<CR>')
+tnoremaps('<A-r>',           '<C-\\><C-n>:NvimTreeToggle<CR>')
 -- }}}
 -- {{{ FTerm  (Alt+T; `T` from "Terminal")
 nnoremaps('<A-t>',           ':lua require("FTerm").toggle()<CR>')
