@@ -17,4 +17,4 @@ require('keybinds')  -- Keymaps
 require('autocmds')  -- Autocommands
 require('functions') -- Custom Lua functions
 require('vimscript') -- Things still in Vimscript
-require('plugins')   -- packer.nvim configs
+require('plugins')   -- Plugin configs

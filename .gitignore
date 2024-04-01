@@ -16,4 +16,4 @@
 **/*.fls
 **/*.xdv
 
-/plugin/packer_compiled.lua
+/lazy-lock.json

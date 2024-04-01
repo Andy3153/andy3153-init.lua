@@ -19,22 +19,11 @@ cmd
   cnoreabbrev help vert help
 ]]
 
-if not lightweightMode then
--- {{{ --- Normal mode---
-cmd
-[[
-  " Colorscheme
-  try
-    colorscheme catppuccin
-  catch
-  endtry
-]]
--- }}}
-else
--- {{{ --- Normal mode---
+-- {{{ --- Lightweight mode ---
+if lightweightMode then
 cmd
 [[
   colorscheme slate
 ]]
--- }}}
 end
+-- }}}

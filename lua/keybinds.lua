@@ -109,10 +109,9 @@ nnoremaps('<leader>H',       ':lua require("smart-splits").resize_left()<CR>')  
 nnoremaps('<leader>J',       ':lua require("smart-splits").resize_down()<CR>')     -- Resize split below
 nnoremaps('<leader>K',       ':lua require("smart-splits").resize_up()<CR>')       -- Resize split above
 nnoremaps('<leader>L',       ':lua require("smart-splits").resize_right()<CR>')    -- Resize split to right
-nnoremaps('<leader>pp',      ':PackerStatus<CR>')                                  -- Packer status
-nnoremaps('<leader>ps',      ':PackerSync<CR>')                                    -- Packer sync
-nnoremaps('<leader>pi',      ':PackerInstall<CR>')                                 -- Packer install
-nnoremaps('<leader>pu',      ':PackerUpdate<CR>')                                  -- Packer update
+nnoremaps('<leader>pp',      ':Lazy<CR>')                                          -- Plugin status
+nnoremaps('<leader>ps',      ':Lazy sync<CR>')                                     -- Plugin sync
+nnoremaps('<leader>pu',      ':Lazy update<CR>')                                   -- Plugin update
 
 for i = 1,9,1 do
   nnoremaps('<leader>' .. i, ':BufferGoto ' .. i .. '<CR>')                      -- Go to buffers 1..9

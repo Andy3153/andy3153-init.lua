@@ -2,280 +2,222 @@
 
 if not lightweightMode then
 
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+-- {{{ Bootstrap lazy.nvim
+local install_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(install_path) then
+  fn.system({ 'git', 'clone', '--filter=blob:none', 'https://github.com/folke/lazy.nvim.git', '--branch=stable', install_path, })
 end
-
-cmd [[packadd packer.nvim]]
+vim.opt.rtp:prepend(install_path)
+-- }}}
 
 require('plugin_conf/neovide') -- load Neovide config
 
-return require('packer').startup(function(use)
-  use
+-- {{{ Plugins
+require('lazy').setup(
+{
   {
-    'wbthomason/packer.nvim'                                                                  -- Plugin manager
-  }
+    'nvim-lualine/lualine.nvim',                              -- Statusline
+    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    config = function() require('plugin_conf/lualine') end
+  },
 
-  use
   {
-    'nvim-lualine/lualine.nvim',                                                              -- Statusline
-    requires = { 'kyazdani42/nvim-web-devicons' },
-    config   = function() require('plugin_conf/lualine') end
-  }
+    'romgrk/barbar.nvim',                                     -- Tab bar
+    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    config = function() require('plugin_conf/barbar') end
+  },
 
-  use
   {
-    'romgrk/barbar.nvim',                                                                     -- Tab bar
-    requires = { 'kyazdani42/nvim-web-devicons' },
-    config   = function() require('plugin_conf/barbar') end
-  }
+    'nvim-tree/nvim-tree.lua',                                -- File tree
+    dependencies =
+    {
+      {
+        'antosha417/nvim-lsp-file-operations',
+        dependencies = { 'nvim-lua/plenary.nvim' }
+      },
 
-  use
-  {
-    'akinsho/toggleterm.nvim',                                                                -- Terminal
-    tag      = 'v2.*',
-    config   = function() require('plugin_conf/toggleterm') end
-  }
+      'nvim-tree/nvim-web-devicons',
+      'JMarkin/nvim-tree.lua-float-preview'
+    },
 
-  use
-  {
-    'kevinhwang91/rnvimr',                                                                    -- File manager
-    config   = function() require('plugin_conf/rnvimr') end
-  }
+  },
 
-  use
   {
-    'is0n/jaq-nvim',                                                                          -- Quick-run code
-    config   = function() require('plugin_conf/jaq') end
-  }
+    'kevinhwang91/rnvimr',                                    -- File manager
+    config = function() require('plugin_conf/rnvimr') end
+  },
 
-  use
   {
-    'petertriho/nvim-scrollbar',                                                              -- Scrollbar
-    config   = function() require('plugin_conf/scrollbar') end
-  }
+    'is0n/jaq-nvim',                                          -- Quick-run code
+    config = function() require('plugin_conf/jaq') end
+  },
 
-  use
   {
-    'yamatsum/nvim-cursorline',                                                               -- Underline similar stuff
-    config   = function() require('plugin_conf/cursorline') end
-  }
+    'petertriho/nvim-scrollbar',                              -- Scrollbar
+    config = function() require('plugin_conf/scrollbar') end
+  },
 
-  use
   {
-    'ethanholz/nvim-lastplace'                                                                -- Remember last place in file
-  }
+    'yamatsum/nvim-cursorline',                               -- Underline similar stuff
+    config = function() require('plugin_conf/cursorline') end
+  },
 
-  use
   {
-    'windwp/nvim-autopairs',                                                                  -- Bracket matching/pairing
-    config   = function() require('plugin_conf/autopairs') end
-  }
+    'windwp/nvim-autopairs',                                  -- Bracket matching/pairing
+    config = function() require('plugin_conf/autopairs') end
+  },
 
-  use
   {
-    'andymass/vim-matchup'                                                                    -- Better '%'
-  }
+    'numToStr/Comment.nvim',                                  -- Commands to comment text
+    config = function() require('plugin_conf/comment') end
+  },
 
-  use
   {
-    'numToStr/Comment.nvim',                                                                  -- Commands to comment text
-    config   = function() require('plugin_conf/comment') end
-  }
+    'lukas-reineke/indent-blankline.nvim',                    -- Indent lines
+    config = function() require('plugin_conf/indent_blankline') end
+  },
 
-  use
   {
-    'lukas-reineke/indent-blankline.nvim',                                                    -- Indent lines
-    config   = function() require('plugin_conf/indent_blankline') end
-  }
+    'norcalli/nvim-colorizer.lua',                            -- Render colors present in text
+    config = function() require('plugin_conf/colorizer') end
+  },
 
-  use
   {
-    'norcalli/nvim-colorizer.lua',                                                            -- Render colors present in text
-    config   = function() require('plugin_conf/colorizer') end
-  }
-
-  use
-  {
-    'goolord/alpha-nvim',                                                                     -- Start screen
-    requires = { 'kyazdani42/nvim-web-devicons' },
+    'goolord/alpha-nvim',                                     -- Start screen
+    dependencies = { 'kyazdani42/nvim-web-devicons' },
     config   = function() require('plugin_conf/alpha') end
-  }
+  },
 
-  use
   {
-    'andweeb/presence.nvim',                                                                  -- Discord Rich Presence
-    config   = function() require('plugin_conf/presence') end
-  }
+    'andweeb/presence.nvim',                                  -- Discord Rich Presence
+    config = function() require('plugin_conf/presence') end
+  },
 
-  use
   {
-    'booperlv/nvim-gomove',                                                                   -- Move selection in file
-    config   = function() require('plugin_conf/gomove') end
-  }
+    'booperlv/nvim-gomove',                                   -- Move selection in file
+    config = function() require('plugin_conf/gomove') end
+  },
 
-  use
   {
-    'folke/which-key.nvim',                                                                   -- Keybind tooltips
-    config   = function() require('plugin_conf/which-key') end
-  }
+    'folke/which-key.nvim',                                   -- Keybind tooltips
+    config = function() require('plugin_conf/which-key') end
+  },
 
-  use
   {
-    'rainbowhxch/accelerated-jk.nvim'                                                         -- Repeat jk movements
-  }
+    'lewis6991/gitsigns.nvim',                                -- Git signs
+    config = function() require('plugin_conf/gitsigns') end
+  },
 
-  use
   {
-    'mrjones2014/smart-splits.nvim'                                                           -- Better split resize
-  }
+    'lervag/vimtex',                                          -- LaTeX support
+    config = function() require('plugin_conf/vimtex') end
+  },
 
-  use
   {
-    'sindrets/winshift.nvim'                                                                  -- Better split move
-  }
+    'iamcco/markdown-preview.nvim',                           -- Preview markdown files
+    build = 'cd app && yarn install',
+    cmd   = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+    ft    = { 'markdown' },
+    init  = function() g.mkdp_filetypes = { 'markdown' } end,
+  },
 
-  use
   {
-    'lewis6991/gitsigns.nvim',                                                                -- Git signs
-    config   = function() require('plugin_conf/gitsigns') end
-  }
+    'nvim-telescope/telescope.nvim',                          -- Fuzzy finder
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function() require('plugin_conf/telescope') end
+  },
 
-  use
   {
-    'lervag/vimtex',                                                                          -- LaTeX support
-    config   = function() require('plugin_conf/vimtex') end
-  }
-
-  use
-  {
-    'tpope/vim-surround'                                                                      -- Surround text in parentheses
-  }
-
-  use
-  {
-    'dhruvasagar/vim-table-mode'                                                              -- Vim table mode
-  }
-
-  use
-  {
-    "iamcco/markdown-preview.nvim",                                                           -- Preview markdown files
-    run   = "cd app && npm install",
-    ft    = { "markdown" },
-    setup = function() g.mkdp_filetypes = { "markdown" } end,
-  }
-
-  use
-  {
-    'gpanders/nvim-parinfer'                                                                  -- Better S-expressions writing
-  }
-
-  use
-  {
-    'nvim-telescope/telescope.nvim',                                                          -- Fuzzy finder
-    requires = {'nvim-lua/plenary.nvim'},
-    config   = function() require('plugin_conf/telescope') end
-  }
-
-  use
-  {
-    'rmagatti/session-lens',                                                                  -- Session searcher
-    requires =
+    'rmagatti/session-lens',                                  -- Session searcher
+    dependencies =
     {
       {
         'rmagatti/auto-session',
         config = function() require('plugin_conf/auto_session') end
       },
+
       'nvim-telescope/telescope.nvim'
     },
-    config   = function() require('plugin_conf/session_lens') end
-  }
+    config = function() require('plugin_conf/session_lens') end
+  },
 
-  use
   {
-    'nvim-treesitter/nvim-treesitter',                                                        -- Better syntax highlighting
-    run      = ':TSUpdate', --why won't this work
-    config   = function() require('plugin_conf/treesitter') end
-  }
+    'nvim-treesitter/nvim-treesitter',                        -- Better syntax highlighting
+    build  = ':TSUpdate',
+    config = function() require('plugin_conf/treesitter') end
+  },
 
-  use
   {
-    'ms-jpq/coq_nvim',                                                                        -- Tab completion
-    branch   = 'coq',
-    run      = ':COQdeps',
-    requires =
+    'williamboman/mason.nvim',                                -- Mason (LSP server provider)
+    build  = ':MasonUpdate',
+    dependencies =
     {
       {
-        'ms-jpq/coq.artifacts',                                                               -- 9k+ snippets
-        branch = 'artifacts'
+        'williamboman/mason-lspconfig.nvim',
+        dependencies =
+        {
+          {
+            'neovim/nvim-lspconfig',                          -- LSP server configuration
+            config = function()
+                       require('plugin_conf/mason')
+                       require('plugin_conf/mason-lspconfig')
+                       require('plugin_conf/lspconfig')
+                     end
+          },
+        },
       },
-      {
-        'ms-jpq/coq.thirdparty',                                                              -- third party sources
-        branch = '3p'
-      }
     },
-    config   = function() require('plugin_conf/coq') end
-  }
+  },
 
-  use
   {
-    "williamboman/mason.nvim",                                                                -- Mason (LSP server provider)
-    run = ":MasonUpdate",
-    config   = function() require('plugin_conf/mason') end
-  }
+    'L3MON4D3/LuaSnip',
+    dependencies =
+    {
+      "rafamadriz/friendly-snippets"
+    },
 
-  use
+    config = function() require('plugin_conf/luasnip') end
+  },
+
   {
-    'williamboman/mason-lspconfig.nvim',
-    config   = function() require('plugin_conf/mason-lspconfig') end
-  }
+    'hrsh7th/nvim-cmp',
+    dependencies =
+    {
+      'hrsh7th/cmp-nvim-lsp',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'micangl/cmp-vimtex',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-calc',
+      'kdheepak/cmp-latex-symbols',
+      'hrsh7th/cmp-emoji',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-cmdline',
+      "onsails/lspkind.nvim",
+      'windwp/nvim-autopairs',
+    },
+    config = function() require('plugin_conf/cmp') end
+  },
 
-  use
+    'ethanholz/nvim-lastplace',                               -- Remember last place in file
+    'andymass/vim-matchup',                                   -- Better '%' key behavior
+    'rainbowhxch/accelerated-jk.nvim',                        -- Repeat jk movements
+    'mrjones2014/smart-splits.nvim',                          -- Better split resize
+    'sindrets/winshift.nvim',                                 -- Better split move
+    'tpope/vim-surround',                                     -- Surround text in parentheses
+    'dhruvasagar/vim-table-mode',                             -- Vim table mode
+    'gpanders/nvim-parinfer',                                 -- Better S-expressions writing
+
   {
-    'neovim/nvim-lspconfig',                                                                  -- LSP server configuration
-    config   = function() require('plugin_conf/mason') require('plugin_conf/lspconfig')  end
-  }
-
-  --[[use
-  {
-    'TaDaa/vimade',                                                                           -- Fade inactive views
-    config   = function() require('plugin_conf/vimade') end
-  }]]
-
-
-  --[[use
-  {
-    'arcticicestudio/nord-vim',                                                               -- Nord
-  }]]
-
-
-  --[[use
-  {
-    'fneu/breezy',                                                                            -- Breeze Dark
-  }]]
-
-  --[[use
-  {
-    'dracula/vim',                                                                            -- Dracula
-    as       = 'dracula'
-  }]]
-
-  --[[use
-  {
-    'morhetz/gruvbox',                                                                        -- Gruvbox
-  }]]
-
-  use
-  {
-    "catppuccin/nvim",                                                                        -- Catppuccin
-    as       = "catppuccin",
-    config   = function() require('plugin_conf/catppuccin') end
-  }
-
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
-
+    'catppuccin/nvim',                                        -- Catppuccin
+    name     = 'catppuccin',
+    lazy     = false,
+    priority = 1000,
+    config   = function()
+                 require('plugin_conf/catppuccin')
+                 cmd([[colorscheme catppuccin]])
+               end
+  },
+})
+-- }}}
 end
