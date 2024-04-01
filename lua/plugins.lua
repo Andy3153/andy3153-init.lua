@@ -23,7 +23,11 @@ require('lazy').setup(
 
   {
     'romgrk/barbar.nvim',                                     -- Tab bar
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    dependencies =
+    {
+      'lewis6991/gitsigns.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
     config = function() require('plugin_conf/barbar') end
   },
 
@@ -33,25 +37,27 @@ require('lazy').setup(
     {
       {
         'antosha417/nvim-lsp-file-operations',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function() require('lsp-file-operations').setup() end
       },
 
       'nvim-tree/nvim-web-devicons',
       'JMarkin/nvim-tree.lua-float-preview'
     },
 
+    config = function() require('plugin_conf/nvim-tree') end
   },
 
   {
-    'kevinhwang91/rnvimr',                                    -- File manager
-    config = function() require('plugin_conf/rnvimr') end
+    'akinsho/toggleterm.nvim',                                -- Terminal
+    config = function() require('plugin_conf/toggleterm') end
   },
 
-  {
-    'is0n/jaq-nvim',                                          -- Quick-run code
-    config = function() require('plugin_conf/jaq') end
-  },
-
+  --{
+  --  'kevinhwang91/rnvimr',                                    -- File manager
+  --  config = function() require('plugin_conf/rnvimr') end
+  --},
+  --
   {
     'petertriho/nvim-scrollbar',                              -- Scrollbar
     config = function() require('plugin_conf/scrollbar') end
