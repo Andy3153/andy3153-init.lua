@@ -5,10 +5,15 @@
 
 require('toggleterm').setup(
 {
-  size            = getHalfColumnSize(), -- Size of terminal in split mode
-  hide_numbers    = true,       -- Hide line numbering
-  shade_terminals = true,       -- Shade the background
-  shading_factor  = '2',        -- How much to shade
-  start_in_insert = false,      -- Don't start in insert mode
-  direction       = 'vertical', -- How to start the terminal ( 'vertical' | 'horizontal' | 'tab' | 'float' )
+  size = function(term)                      -- Size of terminal in split mode
+    if term.direction == 'horizontal' then
+      return opt.lines:get() * .2
+    elseif term.direction == 'vertical' then
+      return opt.columns:get() * .4
+    end
+  end,
+
+  autochdir       = true,                    -- Change directory automatically
+  start_in_insert = false,                   -- Don't start in insert mode
+  direction       = 'horizontal',            -- How to start the terminal ( 'vertical' | 'horizontal' | 'tab' | 'float' )
 })

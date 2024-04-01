@@ -98,15 +98,6 @@ function clearAllMarks()
 end
 -- }}}
 
--- {{{ Get half of horizontal screen size
-function getHalfColumnSize()
-  local size     = opt.columns:get()
-  local halfSize = math.floor(size / 2)
-
-  return halfSize
-end
--- }}}
-
 if not lightweightMode then
 -- {{{ --- Normal mode---
 -- {{{ Get color from Catppuccin colorscheme
