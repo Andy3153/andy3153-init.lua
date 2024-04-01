@@ -87,7 +87,6 @@ lspservers_to_install =
   'lua_ls',
   'marksman',
   'pylsp',
-  'rnix',
   'texlab',
   'vimls'
 }
