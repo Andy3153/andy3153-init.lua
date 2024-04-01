@@ -5,11 +5,7 @@
 
 -- {{{ Variables
 local cmp = require('cmp')
-local has_words_before = function()
-  unpack = unpack or table.unpack
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
+local luasnip = require('luasnip')
 -- }}}
 
 -- {{{ Setup
@@ -63,30 +59,15 @@ cmp.setup(
   -- }}}
 
   -- {{{ Keymaps
-  --[[mapping = {
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
-      if cmp.visible() then
-        local entry = cmp.get_selected_entry()
-        if not entry then
-          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-        end
-        cmp.confirm()
-      else
-        fallback()
-      end
-    end, {"i","s","c",}),
-  }]]
-
   mapping =
   {
     ['<C-Space>'] = cmp.mapping.complete({}),
-    ['<C-c>'] = cmp.mapping.close(),
-    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-d>'] = cmp.mapping.scroll_docs(4),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = false,
+    ['<C-c>']     = cmp.mapping.close(),
+    ['<C-u>']     = cmp.mapping.scroll_docs(-4),
+    ['<C-d>']     = cmp.mapping.scroll_docs(4),
+    ['<CR>']      = cmp.mapping.confirm({
+      behavior    = cmp.ConfirmBehavior.Replace,
+      select      = false,
     }),
 
     ["<Tab>"] = cmp.mapping(function(fallback)
