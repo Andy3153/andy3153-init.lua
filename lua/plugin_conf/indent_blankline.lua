@@ -16,7 +16,7 @@ local highlight =
 local hooks = require "ibl.hooks"
 -- create the highlight groups in the highlight setup hook, so they are reset
 -- every time the colorscheme changes
-
+if g.colors_name == nil then g.colors_name = "" end
 if string.find(g.colors_name, "catppuccin") then
   hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
     api.nvim_set_hl(0, "RainbowRed",    { fg = getCatppuccinColor("mocha", "red")      })
