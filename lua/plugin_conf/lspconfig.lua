@@ -2,14 +2,7 @@
 -- nvim-lspconfig configuration
 --
 
--- Configure all LSP servers with coq
-for _, lsp in ipairs(lspservers_to_install) do
-  require('lspconfig')[lsp].setup(require('coq').lsp_ensure_capabilities({
-    -- on_attach = my_custom_on_attach,
-  }))
-end
-
--- Appearance
+-- {{{ Appearance
 vim.diagnostic.config(
 {
   virtual_text =
@@ -21,10 +14,12 @@ vim.diagnostic.config(
   update_in_insert = false,
   severity_sort = false,
 })
+-- }}}
 
--- Symbols for sign column
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+-- {{{ Symbols for sign column
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+-- }}}

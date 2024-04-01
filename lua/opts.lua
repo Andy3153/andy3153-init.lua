@@ -43,6 +43,7 @@ local options =                     -- Option list
   expandtab      = true,                   -- Use spaces instead of <TAB>
   autoindent     = true,                   -- Reproduce the indentation of the previous line
   smartindent    = true,                   -- Increase the indenting level after ‘{’, decrease it after ‘}’
+  completeopt    = {'menu', 'menuone', 'noselect'},
 }
 
 opt.clipboard:append('unnamedplus')        -- Use system clipboard (REQUIRES xclip or wl-clipboard)
