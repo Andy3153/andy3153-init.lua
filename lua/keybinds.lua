@@ -161,19 +161,25 @@ nnoremaps('<C-_>',           '<Plug>(comment_toggle_current_linewise)<CR>')     
 inoremaps('<C-_>',           '<ESC><Plug>(comment_toggle_current_linewise)<CR>ki') -- Line comment insert
 vnoremaps('<C-_>',           '<Plug>(comment_toggle_blockwise_visual)<CR>')        -- Line comment visual
 -- }}}
--- {{{ Rnvimr (Alt+R; `R` from "Ranger")
---nnoremaps('<A-r>',           ':RnvimrToggle<CR>')
---tnoremaps('<A-r>',           '<C-\\><C-n>:RnvimrToggle<CR>')
+-- {{{ Folds
+nnoremaps('<C-_>',           ':lua require(\'ufo\').openAllFolds<CR>')             -- Open all folds
+nnoremaps('<C-_>',           ':lua require(\'ufo\').closeAllFolds<CR>')            -- Close all folds
 -- }}}
--- {{{ nvim-tree (Alt+E; `E` from "Explorer")
+-- {{{ nvim-tree
 nnoremaps('<A-r>',           ':NvimTreeToggle<CR>')
 tnoremaps('<A-r>',           '<C-\\><C-n>:NvimTreeToggle<CR>')
 -- }}}
--- {{{ FTerm  (Alt+T; `T` from "Terminal")
+-- {{{ FTerm
 nnoremaps('<A-t>',           ':lua require("FTerm").toggle()<CR>')
 tnoremaps('<A-t>',           '<C-\\><C-n>:lua require("FTerm").toggle()<CR>')
 -- }}}
--- {{{ Alpha  (Alt+N; `N` from "New Tab")
+-- {{{ compiler.nvim
+nnoremaps('<F6>',            ':CompilerOpen<CR>')
+nnoremaps('<S-F6>',          ':CompilerStop<CR>'
+                          .. ':CompilerRedo<CR>')
+nnoremaps('<F7>',            ':CompilerToggleResults<CR>')
+-- }}}
+-- {{{ Alpha
 nnoremaps('<A-n>',           ':Alpha<CR>')
 -- }}}
 -- {{{ GoMove
