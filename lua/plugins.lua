@@ -10,152 +10,195 @@ end
 vim.opt.rtp:prepend(install_path)
 -- }}}
 
-require('plugin_conf/neovide') -- load Neovide config
+require('plugin_conf.neovide') -- load Neovide config
 
 -- {{{ Plugins
 require('lazy').setup(
 {
   {
     'nvim-lualine/lualine.nvim',                              -- Statusline
+    lazy         = false,
     dependencies = { 'kyazdani42/nvim-web-devicons' },
-    config = function() require('plugin_conf/lualine') end
+    config       = function() require('plugin_conf.lualine') end
   },
 
   {
     'romgrk/barbar.nvim',                                     -- Tab bar
+    lazy         = false,
     dependencies =
     {
       'lewis6991/gitsigns.nvim',
       'nvim-tree/nvim-web-devicons',
     },
-    config = function() require('plugin_conf/barbar') end
+    config       = function() require('plugin_conf.barbar') end
   },
 
   {
     'nvim-tree/nvim-tree.lua',                                -- File tree
+    lazy         = false,
     dependencies =
     {
       {
         'antosha417/nvim-lsp-file-operations',
         dependencies = { 'nvim-lua/plenary.nvim' },
-        config = function() require('lsp-file-operations').setup() end
+        config       = function() require('lsp-file-operations').setup() end
       },
 
       'nvim-tree/nvim-web-devicons',
       'JMarkin/nvim-tree.lua-float-preview'
     },
 
-    config = function() require('plugin_conf/nvim-tree') end
+    config       = function() require('plugin_conf.nvim-tree') end
   },
 
   {
     'akinsho/toggleterm.nvim',                                -- Terminal
-    config = function() require('plugin_conf/toggleterm') end
+    lazy   = false,
+    config = function() require('plugin_conf.toggleterm') end
   },
 
-  --{
-  --  'kevinhwang91/rnvimr',                                    -- File manager
-  --  config = function() require('plugin_conf/rnvimr') end
-  --},
-  --
+  {
+    "Zeioth/compiler.nvim",
+    lazy         = true,
+    cmd          = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+    dependencies =
+    {
+      {
+        "stevearc/overseer.nvim",
+        commit = "68a2d344cea4a2e11acfb5690dc8ecd1a1ec0ce0",
+        cmd    = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+        opts   =
+        {
+          task_list =
+          {
+            direction      = "bottom",
+            min_height     = opt.lines:get() * .2,
+            max_height     = opt.lines:get() * .2,
+            default_detail = 1
+          },
+        },
+      }
+    },
+    opts         = {}
+  },
+
   {
     'petertriho/nvim-scrollbar',                              -- Scrollbar
-    config = function() require('plugin_conf/scrollbar') end
+    lazy   = false,
+    config = function() require('plugin_conf.scrollbar') end
   },
 
   {
     'yamatsum/nvim-cursorline',                               -- Underline similar stuff
-    config = function() require('plugin_conf/cursorline') end
+    lazy   = false,
+    config = function() require('plugin_conf.cursorline') end
   },
 
   {
     'windwp/nvim-autopairs',                                  -- Bracket matching/pairing
-    config = function() require('plugin_conf/autopairs') end
+    lazy   = false,
+    config = function() require('plugin_conf.autopairs') end
   },
 
   {
     'numToStr/Comment.nvim',                                  -- Commands to comment text
-    config = function() require('plugin_conf/comment') end
+    lazy   = false,
+    config = function() require('plugin_conf.comment') end
   },
 
   {
     'lukas-reineke/indent-blankline.nvim',                    -- Indent lines
-    config = function() require('plugin_conf/indent_blankline') end
+    lazy   = false,
+    config = function() require('plugin_conf.indent_blankline') end
   },
 
   {
     'norcalli/nvim-colorizer.lua',                            -- Render colors present in text
-    config = function() require('plugin_conf/colorizer') end
+    lazy   = false,
+    config = function() require('plugin_conf.colorizer') end
   },
 
   {
     'goolord/alpha-nvim',                                     -- Start screen
+    lazy         = false,
     dependencies = { 'kyazdani42/nvim-web-devicons' },
-    config   = function() require('plugin_conf/alpha') end
+    config       = function() require('plugin_conf.alpha') end
   },
 
   {
     'andweeb/presence.nvim',                                  -- Discord Rich Presence
-    config = function() require('plugin_conf/presence') end
+    lazy   = false,
+    config = function() require('plugin_conf.presence') end
   },
 
   {
     'booperlv/nvim-gomove',                                   -- Move selection in file
-    config = function() require('plugin_conf/gomove') end
+    lazy   = false,
+    config = function() require('plugin_conf.gomove') end
   },
 
   {
     'folke/which-key.nvim',                                   -- Keybind tooltips
-    config = function() require('plugin_conf/which-key') end
+    lazy   = false,
+    config = function() require('plugin_conf.which-key') end
   },
 
   {
     'lewis6991/gitsigns.nvim',                                -- Git signs
-    config = function() require('plugin_conf/gitsigns') end
+    lazy   = false,
+    config = function() require('plugin_conf.gitsigns') end
   },
 
   {
     'lervag/vimtex',                                          -- LaTeX support
-    config = function() require('plugin_conf/vimtex') end
+    lazy   = false,
+    config = function() require('plugin_conf.vimtex') end
   },
 
   {
     'iamcco/markdown-preview.nvim',                           -- Preview markdown files
-    build = 'cd app && yarn install',
+    lazy  = true,
     cmd   = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
     ft    = { 'markdown' },
+    build = 'cd app && yarn install',
     init  = function() g.mkdp_filetypes = { 'markdown' } end,
   },
 
   {
     'nvim-telescope/telescope.nvim',                          -- Fuzzy finder
+    lazy         = false,
     dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function() require('plugin_conf/telescope') end
+    config       = function() require('plugin_conf.telescope') end
   },
 
   {
     'rmagatti/session-lens',                                  -- Session searcher
+    lazy         = false,
     dependencies =
     {
       {
         'rmagatti/auto-session',
-        config = function() require('plugin_conf/auto_session') end
+        lazy   = false,
+        config = function() require('plugin_conf.auto_session') end
       },
 
       'nvim-telescope/telescope.nvim'
     },
-    config = function() require('plugin_conf/session_lens') end
+    config       = function() require('plugin_conf.session_lens') end
   },
 
   {
     'nvim-treesitter/nvim-treesitter',                        -- Better syntax highlighting
+    lazy   = false,
     build  = ':TSUpdate',
-    config = function() require('plugin_conf/treesitter') end
+    config = function() require('plugin_conf.treesitter') end
   },
 
   {
     'williamboman/mason.nvim',                                -- Mason (LSP server provider)
-    build  = ':MasonUpdate',
+    lazy         = true,
+    cmd          = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+    build        = ':MasonUpdate',
     dependencies =
     {
       {
@@ -165,9 +208,9 @@ require('lazy').setup(
           {
             'neovim/nvim-lspconfig',                          -- LSP server configuration
             config = function()
-                       require('plugin_conf/mason')
-                       require('plugin_conf/mason-lspconfig')
-                       require('plugin_conf/lspconfig')
+                       require('plugin_conf.mason')
+                       require('plugin_conf.mason-lspconfig')
+                       require('plugin_conf.lspconfig')
                      end
           },
         },
@@ -176,17 +219,19 @@ require('lazy').setup(
   },
 
   {
-    'L3MON4D3/LuaSnip',
+    'L3MON4D3/LuaSnip',                                       -- Code snippets
+    lazy         = false,
     dependencies =
     {
       "rafamadriz/friendly-snippets"
     },
 
-    config = function() require('plugin_conf/luasnip') end
+    config       = function() require('plugin_conf.luasnip') end
   },
 
   {
     'hrsh7th/nvim-cmp',
+    lazy         = false,
     dependencies =
     {
       'hrsh7th/cmp-nvim-lsp',
@@ -202,7 +247,7 @@ require('lazy').setup(
       "onsails/lspkind.nvim",
       'windwp/nvim-autopairs',
     },
-    config = function() require('plugin_conf/cmp') end
+    config       = function() require('plugin_conf.cmp') end
   },
 
     'ethanholz/nvim-lastplace',                               -- Remember last place in file
@@ -216,11 +261,11 @@ require('lazy').setup(
 
   {
     'catppuccin/nvim',                                        -- Catppuccin
-    name     = 'catppuccin',
     lazy     = false,
     priority = 1000,
+    name     = 'catppuccin',
     config   = function()
-                 require('plugin_conf/catppuccin')
+                 require('plugin_conf.catppuccin')
                  cmd([[colorscheme catppuccin]])
                end
   },
