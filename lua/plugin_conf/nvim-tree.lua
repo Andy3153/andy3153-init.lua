@@ -8,4 +8,47 @@ g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 -- }}}
 
-require('nvim-tree').setup()
+require('nvim-tree').setup(
+{
+  view =
+  {
+    centralize_selection = true,
+  },
+
+  renderer =
+  {
+    add_trailing           = true,
+    group_empty            = true,
+    full_name              = true,
+    indent_width           = 1,
+    highlight_git          = "all";
+    highlight_diagnostics  = "all";
+    highlight_opened_files = "name";
+    highlight_modified     = "all";
+
+    icons =
+    {
+      padding = "  ",
+    },
+  },
+
+  update_focused_file =
+  {
+    enable = true,
+  },
+
+  diagnostics =
+  {
+    enable = true,
+  },
+
+  modified =
+  {
+    enable = true,
+  },
+
+  filters =
+  {
+    git_ignored = false,
+  },
+})
