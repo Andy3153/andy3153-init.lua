@@ -86,6 +86,7 @@ lspservers_to_install =
   'jdtls',
   'lua_ls',
   'marksman',
+  'nil_ls',
   'pylsp',
   'texlab',
   'vimls'
