@@ -221,6 +221,7 @@ require('lazy').setup(
   {
     'L3MON4D3/LuaSnip',                                       -- Code snippets
     lazy         = false,
+    build        = "make install_jsregexp",
     dependencies =
     {
       "rafamadriz/friendly-snippets"
