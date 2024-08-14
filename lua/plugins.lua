@@ -140,7 +140,6 @@ require('lazy').setup(
   {
     'folke/which-key.nvim',                                   -- Keybind tooltips
     lazy   = false,
-    config = function() require('plugin_conf.which-key') end
   },
 
   {
