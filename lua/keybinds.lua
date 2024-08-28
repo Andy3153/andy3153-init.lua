@@ -104,7 +104,7 @@ nnoremaps('<leader>fv',      ':Telescope treesitter<CR>')                       
 nnoremaps('<leader>f/',      ':Telescope current_buffer_fuzzy_find<CR>')           -- Telescope fuzzy finder
 nnoremaps('<leader>fs',      ':Telescope spell_suggest<CR>')                       -- Telescope spell checker suggestions
 
-nnoremap ('<leader>ss',      ':SessionSearch<CR>')                                 -- Open session searcher
+nnoremaps('<leader>ss',      ':SessionSearch<CR>')                                 -- Open session searcher
 nnoremaps('<leader>sp',      ':cd %:p:h | SessionSave<CR>')                        -- Save session
 
 nnoremaps('<leader>.',       ':BufferNext<CR>')                                    -- To next tab
