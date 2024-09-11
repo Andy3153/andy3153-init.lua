@@ -20,7 +20,7 @@ augroupc('lightweight_bg')
 -- {{{ Custom tab sizes for specific filetypes
 autocmd('FileType',
 {
-  pattern = { '', 'dockerfile', 'html', 'lua', 'markdown', 'nginx', 'nix', 'none', 'python', 'sh', 'text', 'vim', 'yaml', 'zsh' },
+  pattern = { '', 'dockerfile', 'html', 'lua', 'markdown', 'nginx', 'nix', 'none', 'python', 'qml', 'sh', 'text', 'vim', 'yaml', 'zsh' },
   group   = 'tab_2spaces',
   command = 'setlocal tabstop=2 shiftwidth=0 softtabstop=0'
 })
