@@ -194,6 +194,12 @@ require('lazy').setup(
   },
 
   {
+    'kosayoda/nvim-lightbulb',
+    lazy = false,
+    config = function() require('plugin_conf.nvim-lightbulb') end
+  },
+
+  {
     'williamboman/mason.nvim',                                -- Mason (LSP server provider)
     lazy         = true,
     cmd          = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
