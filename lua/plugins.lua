@@ -201,6 +201,10 @@ require('lazy').setup(
   },
 
   {
+    "j-hui/fidget.nvim",
+  },
+
+  {
     'nvimdev/lspsaga.nvim',                                   -- LSP extras
     lazy         = true,
     event        = "LspAttach",
