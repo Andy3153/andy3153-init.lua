@@ -144,10 +144,16 @@ nnoremaps('<leader>t',       ':ToggleTerm direction=horizontal dir=%:p:h<CR>')  
 nnoremaps('<leader>T',       ':ToggleTerm direction=float dir=%:p:h<CR>')          -- Toggle floating terminal
 -- }}}
 
--- {{{ Diagnostics
+-- {{{ Code interactions w/ LSP, Treesitter
 nnoremaps('<leader>dd',      ':Trouble diagnostics toggle<CR>')                    -- Trouble diagnostics
 nnoremaps('<leader>ds',      ':Trouble symbols toggle<CR>')                        -- Trouble symbols
-nnoremaps('<leader>fv',      ':Telescope treesitter<CR>')                          -- Telescope variables
+
+nnoremaps('<leader>dv',      ':Telescope treesitter<CR>')                          -- Telescope variables
+
+nnoremaps('<leader>dc',      ':Lspsaga code_action<CR>')                           -- Lspsaga code actions
+nnoremaps('<leader>dh',      ':Lspsaga hover_doc<CR>')                             -- Lspsaga code actions
+nnoremaps('<leader>dr',      ':Lspsaga lsp_rename ++project<CR>')                  -- Lspsaga rename language symbols
+nnoremaps('<leader>dR',      ':Lspsaga rename<CR>')                                -- Lspsaga rename
 -- }}}
 
 -- {{{ Telescope

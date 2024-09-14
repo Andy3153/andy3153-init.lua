@@ -194,16 +194,24 @@ require('lazy').setup(
   },
 
   {
-    'kosayoda/nvim-lightbulb',
-    lazy = false,
-    config = function() require('plugin_conf.nvim-lightbulb') end
+    'folke/trouble.nvim',                                     -- Code diagnostic tools
+    lazy   = true,
+    cmd    = "Trouble",
+    config = function() require('plugin_conf.trouble-nvim') end
   },
 
   {
-    'folke/trouble.nvim',
-    lazy = false,
-    cmd = "Trouble",
-    config = function() require('plugin_conf.trouble-nvim') end
+    'nvimdev/lspsaga.nvim',                                   -- LSP extras
+    lazy         = true,
+    event        = "LspAttach",
+    dependencies =
+    {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons',
+      'lewis6991/gitsigns.nvim',
+    },
+
+    config       = function() require('lspsaga').setup() end
   },
 
   {
