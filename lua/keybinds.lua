@@ -214,6 +214,11 @@ vnoremaps('<C-l>',           '<Plug>GoVSDRight')                                
 nmap(     'k',               '<Plug>(accelerated_jk_k)')                           -- Move up faster when holding
 nmap(     'j',               '<Plug>(accelerated_jk_j)')                           -- Move down faster when holding
 -- }}}
+
+-- {{{ Cellular Automaton
+nnoremaps('<leader>CAR',     ':CellularAutomaton make_it_rain<CR>')                -- Make it rain with your code
+nnoremaps('<leader>CAG',     ':CellularAutomaton game_of_life<CR>')                -- Game of Life with your code
+-- }}}
 -- }}}
 else
 -- {{{ --- Lightweight mode---

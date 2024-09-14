@@ -310,6 +310,10 @@ require('lazy').setup(
                  cmd([[colorscheme catppuccin]])
                end
   },
+
+  {
+    'eandrju/cellular-automaton.nvim'
+  },
 })
 -- }}}
 end
