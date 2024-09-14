@@ -152,8 +152,8 @@ nnoremaps('<leader>dv',      ':Telescope treesitter<CR>')                       
 
 nnoremaps('<leader>dc',      ':Lspsaga code_action<CR>')                           -- Lspsaga code actions
 nnoremaps('<leader>dh',      ':Lspsaga hover_doc<CR>')                             -- Lspsaga code actions
-nnoremaps('<leader>dr',      ':Lspsaga lsp_rename ++project<CR>')                  -- Lspsaga rename language symbols
-nnoremaps('<leader>dR',      ':Lspsaga rename<CR>')                                -- Lspsaga rename
+nnoremaps('<leader>dr',      ':Lspsaga rename<CR>')                                -- Lspsaga rename
+nnoremaps('<leader>dR',      ':Lspsaga lsp_rename ++project<CR>')                  -- Lspsaga rename language symbols
 -- }}}
 
 -- {{{ Telescope
