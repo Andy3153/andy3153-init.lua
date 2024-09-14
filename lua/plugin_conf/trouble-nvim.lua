@@ -7,7 +7,8 @@ require('trouble').setup(
 {
   modes =
   {
-    diagnostics =
+    -- {{{ Local diagnostics
+    local_diagnostics =
     {
       mode     = "diagnostics",
       type     = "split",
@@ -27,6 +28,16 @@ require('trouble').setup(
           },
         },
       },
+    },
+    -- }}}
+
+    -- {{{ Project-wide diagnostics
+    diagnostics =
+    {
+      mode     = "diagnostics",
+      type     = "split",
+      relative = "win",
+      position = "right",
 
       preview =
       {
@@ -40,5 +51,6 @@ require('trouble').setup(
         zindex    = 200,
       },
     },
+    -- }}}
   },
 })

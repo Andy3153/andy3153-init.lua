@@ -145,7 +145,8 @@ nnoremaps('<leader>T',       ':ToggleTerm direction=float dir=%:p:h<CR>')       
 -- }}}
 
 -- {{{ Code interactions w/ LSP, Treesitter
-nnoremaps('<leader>dd',      ':Trouble diagnostics toggle<CR>')                    -- Trouble diagnostics
+nnoremaps('<leader>dd',      ':Trouble local_diagnostics toggle<CR>')              -- Trouble local diagnostics
+nnoremaps('<leader>dD',      ':Trouble diagnostics toggle<CR>')                    -- Trouble project-wide diagnostics
 nnoremaps('<leader>ds',      ':Trouble symbols toggle<CR>')                        -- Trouble symbols
 
 nnoremaps('<leader>dv',      ':Telescope treesitter<CR>')                          -- Telescope variables
