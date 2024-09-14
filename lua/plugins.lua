@@ -200,6 +200,13 @@ require('lazy').setup(
   },
 
   {
+    'folke/trouble.nvim',
+    lazy = false,
+    cmd = "Trouble",
+    config = function() require('plugin_conf.trouble-nvim') end
+  },
+
+  {
     'williamboman/mason.nvim',                                -- Mason (LSP server provider)
     lazy         = true,
     cmd          = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
