@@ -222,6 +222,15 @@ require('lazy').setup(
   },
 
   {
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",           -- Render LSP diags under problematic line
+    dependencies =
+    {
+      'neovim/nvim-lspconfig',
+    },
+    config       = function() require('lsp_lines').setup() end
+  },
+
+  {
     'williamboman/mason.nvim',                                -- Mason (LSP server provider)
     lazy         = true,
     cmd          = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },

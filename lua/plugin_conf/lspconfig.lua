@@ -5,10 +5,12 @@
 -- {{{ Appearance
 vim.diagnostic.config(
 {
-  virtual_text =
+  --[[virtual_text =
   {
     prefix = '■', -- Could be '●', '▎', 'x'
-  },
+  },]]
+  virtual_text = false, -- disable default virtual text
+  virtual_lines = true, -- enable virtual lines from lsp_lines.nvim
   signs = true,
   underline = true,
   update_in_insert = false,
