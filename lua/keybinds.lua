@@ -144,6 +144,12 @@ nnoremaps('<leader>t',       ':ToggleTerm direction=horizontal dir=%:p:h<CR>')  
 nnoremaps('<leader>T',       ':ToggleTerm direction=float dir=%:p:h<CR>')          -- Toggle floating terminal
 -- }}}
 
+-- {{{ Diagnostics
+nnoremaps('<leader>dd',      ':Trouble diagnostics toggle<CR>')                    -- Trouble diagnostics
+nnoremaps('<leader>ds',      ':Trouble symbols toggle<CR>')                        -- Trouble symbols
+nnoremaps('<leader>fv',      ':Telescope treesitter<CR>')                          -- Telescope variables
+-- }}}
+
 -- {{{ Telescope
 nnoremaps('<leader><space>', ':Telescope oldfiles hidden=true<CR>')                -- Telescope recent files
 nnoremaps('<leader>fo',      ':Telescope oldfiles hidden=true<CR>')                -- [...]
