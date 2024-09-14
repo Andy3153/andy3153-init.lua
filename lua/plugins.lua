@@ -215,6 +215,13 @@ require('lazy').setup(
   },
 
   {
+    'ray-x/lsp_signature.nvim',                               -- Function signature
+    lazy   = true,
+    event  = "VeryLazy",
+    config = function() require('plugin_conf.lsp_signature') end
+  },
+
+  {
     'williamboman/mason.nvim',                                -- Mason (LSP server provider)
     lazy         = true,
     cmd          = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
