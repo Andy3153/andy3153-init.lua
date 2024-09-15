@@ -227,6 +227,8 @@ require('lazy').setup(
 
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",           -- Render LSP diags under problematic line
+    lazy         = true,
+    event        = "LspAttach",
     dependencies =
     {
       'neovim/nvim-lspconfig',
