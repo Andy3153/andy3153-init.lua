@@ -5,16 +5,21 @@
 -- {{{ Appearance
 vim.diagnostic.config(
 {
-  --[[virtual_text =
+  virtual_text =        -- enable virtual text on all lines
   {
-    prefix = '■', -- Could be '●', '▎', 'x'
-  },]]
-  virtual_text = false, -- disable default virtual text
-  virtual_lines = true, -- enable virtual lines from lsp_lines.nvim
-  signs = true,
-  underline = true,
-  update_in_insert = false,
-  severity_sort = false,
+    prefix = '■', -- ● ■
+  },
+
+  virtual_lines =       -- enable virtual lines only on current line
+  {
+    only_current_line    = true,
+    highlight_whole_line = false,
+  },
+
+  signs            = true,
+  underline        = true,
+  update_in_insert = true,
+  severity_sort    = false,
 })
 -- }}}
 
