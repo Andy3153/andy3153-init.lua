@@ -1,0 +1,32 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "lightweightMode",
+        "customModelineElements",
+        "generateModeline",
+        "insertModeline",
+        "clearSearch",
+        "clearAllRegisters",
+        "clearAllMarks",
+        "getCatppuccinColor",
+        "api",
+        "augroup",
+        "autocmd",
+        "cmd",
+        "fn",
+        "g",
+        "map",
+        "opt",
+        "nmap",
+        "vnoremaps",
+        "nnoremap",
+        "nnoremaps",
+        "inoremaps",
+        "vmap",
+        "tnoremap",
+        "tnoremaps",
+        "augroupc",
+        "buffertypes_to_exclude",
+        "lspservers_to_install"
+    ]
+}
