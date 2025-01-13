@@ -74,6 +74,11 @@ nmap(     'ț', '\'')
 vmap(     'ț', '\'')
 nmap(     'Ț', '"')
 vmap(     'Ț', '"')
+
+--nmap(     ';', '<')
+--vmap(     ';', '<')
+--nmap(     ':', '>')
+--vmap(     ':', '>')
 -- }}}
 
 if not lightweightMode then
