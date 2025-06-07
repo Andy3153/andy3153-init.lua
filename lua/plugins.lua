@@ -301,6 +301,7 @@ require('lazy').setup(
     'tpope/vim-surround',                                     -- Surround text in parentheses
     'dhruvasagar/vim-table-mode',                             -- Vim table mode
     'gpanders/nvim-parinfer',                                 -- Better S-expressions writing
+    'sbdchd/neoformat',                                       -- Code formatter
 
   {
     'catppuccin/nvim',                                        -- Catppuccin
