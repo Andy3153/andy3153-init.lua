@@ -1,0 +1,2 @@
+- sometimes lsp messages show up twice
+- mason might download even if lsp is in path

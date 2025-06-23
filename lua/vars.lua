@@ -83,6 +83,7 @@ lspservers_to_install =
   'cmake',
   'dockerls',
   'html',
+  'hyprls',
   'jdtls',
   'lua_ls',
   'marksman',
