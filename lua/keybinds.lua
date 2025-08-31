@@ -175,7 +175,7 @@ nnoremaps('<leader>fs',      ':Telescope spell_suggest<CR>')                    
 -- }}}
 
 -- {{{ Session Lens & Auto Session
-nnoremaps('<leader>ss',      ':SessionSearch<CR>')                                 -- Open session searcher
+nnoremaps('<leader>ss',      ':AutoSession search<CR>')                            -- Open session searcher
 nnoremaps('<leader>sp',      ':cd %:p:h | SessionSave<CR>')                        -- Save session
 -- }}}
 
