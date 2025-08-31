@@ -81,15 +81,21 @@ lspservers_to_install =
   'bashls',
   'clangd',
   'cmake',
+  'cssls',
+  'docker_compose_language_service',
+  --'docker_language_server',
   'dockerls',
   'html',
   'hyprls',
   'jdtls',
   'lua_ls',
   'marksman',
+  'nginx_language_server',
   'nil_ls',
   'pylsp',
+  'taplo',
   'texlab',
-  'vimls'
+  'vimls',
+  'yamlls'
 }
 -- }}}
