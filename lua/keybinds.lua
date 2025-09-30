@@ -174,9 +174,10 @@ nnoremaps('<leader>f/',      ':Telescope current_buffer_fuzzy_find<CR>')        
 nnoremaps('<leader>fs',      ':Telescope spell_suggest<CR>')                       -- Telescope spell checker suggestions
 -- }}}
 
--- {{{ Session Lens & Auto Session
-nnoremaps('<leader>ss',      ':AutoSession search<CR>')                            -- Open session searcher
-nnoremaps('<leader>sp',      ':cd %:p:h | SessionSave<CR>')                        -- Save session
+-- {{{ Auto Session
+nnoremaps('<leader>ss',      ':AutoSession search<CR>')                            -- Search session
+nnoremaps('<leader>sd',      ':cd %:p:h | AutoSession deletePicker<CR>')           -- Delete session
+nnoremaps('<leader>sp',      ':cd %:p:h | AutoSession save<CR>')                   -- Save session
 -- }}}
 
 -- {{{ Lazy.nvim

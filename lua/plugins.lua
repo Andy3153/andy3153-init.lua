@@ -171,19 +171,10 @@ require('lazy').setup(
   },
 
   {
-    'rmagatti/session-lens',                                  -- Session searcher
+    'rmagatti/auto-session',                                  -- Session searcher
     lazy         = false,
-    dependencies =
-    {
-      {
-        'rmagatti/auto-session',
-        lazy   = false,
-        config = function() require('plugin_conf.auto_session') end
-      },
-
-      'nvim-telescope/telescope.nvim'
-    },
-    config       = function() require('plugin_conf.session_lens') end
+    dependencies = { 'nvim-telescope/telescope.nvim' },
+    config       = function() require('plugin_conf.auto_session') end
   },
 
   {
