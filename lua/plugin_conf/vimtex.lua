@@ -4,7 +4,7 @@
 
 -- Viewer options: One may configure the viewer either by specifying a built-in
 -- viewer method:
-g.vimtex_view_method          = 'zathura'
+g.vimtex_view_method = 'zathura'
 
 -- Or with a generic interface:
 g.vimtex_view_general_viewer  = 'okular'
@@ -15,12 +15,12 @@ g.vimtex_view_general_options = '--unique file:@pdf\\#src:@line@tex'
 -- want another compiler backend, you can change it as follows. The list of
 -- supported backends and further explanation is provided in the documentation,
 -- see ":help vimtex-compiler".
-g.vimtex_compiler_method      = 'latexmk' -- 'tectonic' -- 'latexrun'
+g.vimtex_compiler_method = 'latexmk' -- 'tectonic' -- 'latexrun'
 
 -- Use XeLaTeX
 g.vimtex_compiler_latexmk_engines =
 {
-  _ = '-xelatex',
+  _ = '-lualatex',
 }
 
 g.vimtex_compiler_latexmk =
@@ -28,7 +28,7 @@ g.vimtex_compiler_latexmk =
   executable = 'latexmk',
   options    =
   {
-    '-xelatex',
+    '-lualatex',
     '-shell-escape',
     '-file-line-error',
     '-synctex=1',
