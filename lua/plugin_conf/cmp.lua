@@ -129,10 +129,10 @@ cmp.event:on(
 -- }}}
 
 -- {{{ Configure with LSP
+require('lspconfig')
+
 for _, lsp in ipairs(lspservers_to_install) do
-  require('lspconfig')[lsp].setup(
-  {
-    capabilities = require('cmp_nvim_lsp').default_capabilities()
-  })
+  vim.lsp.config(lsp, require('cmp_nvim_lsp').default_capabilities())
+  vim.lsp.enable(lsp)
 end
 -- }}}
