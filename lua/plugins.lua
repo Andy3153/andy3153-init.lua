@@ -155,6 +155,10 @@ require('lazy').setup(
   },
 
   {
+      "let-def/texpresso.vim",                                -- LaTeX live rendering
+  },
+
+  {
     'iamcco/markdown-preview.nvim',                           -- Preview markdown files
     lazy  = true,
     cmd   = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },

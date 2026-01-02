@@ -142,6 +142,10 @@ nnoremaps('<leader>E',       ':NvimTreeFocus<CR>')                              
 tnoremaps('<leader>E',       '<C-\\><C-n>:NvimTreeFocus<CR>')                      -- [...]
 -- }}}
 
+-- {{{ TeXpresso
+nnoremaps('<leader>lp',       ':TeXpresso %<CR>')                                  -- TeXpresso start preview
+-- }}}
+
 -- {{{ ToggleTerm
 nnoremaps('<A-t>',           ':ToggleTerm direction=horizontal dir=%:p:h<CR>')     -- Toggle horizontal terminal
 nnoremaps('<A-S-t>',         ':ToggleTerm direction=float dir=%:p:h<CR>')          -- Toggle floating terminal
