@@ -185,7 +185,6 @@ require('lazy').setup(
     'nvim-treesitter/nvim-treesitter',                        -- Better syntax highlighting
     lazy   = false,
     build  = ':TSUpdate',
-    config = function() require('plugin_conf.treesitter') end
   },
 
   {
