@@ -120,9 +120,19 @@ require('lazy').setup(
 
   {
     'goolord/alpha-nvim',                                     -- Start screen
-    lazy         = false,
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
-    config       = function() require('plugin_conf.alpha') end
+    lazy = false,
+
+    dependencies =
+    {
+      'kyazdani42/nvim-web-devicons',
+
+      {
+        "amansingh-afk/milli.nvim",                           -- Animated splash screens
+        lazy = false,
+      },
+    },
+
+    config = function() require('plugin_conf.alpha') end
   },
 
   {

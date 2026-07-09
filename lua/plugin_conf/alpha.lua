@@ -5,8 +5,12 @@
 
 -- {{{ Function shorthands
 local alpha   = require('alpha')
-local fortune = require("alpha.fortune")
+local fortune = require('alpha.fortune')
 local theme   = require('alpha.themes.dashboard') -- or alpha.themes.startify
+
+local milli = require('milli')
+
+local milliSplash = "lights"
 -- }}}
 
 -- {{{ Some ASCII art
@@ -71,10 +75,19 @@ local ascii_ghost =
 -- }}}
 
 -- {{{ Settings
-alpha.setup(theme.config)                         -- Theme
-theme.section.header.val  = ascii_bloody           -- Header
-theme.section.footer.val  = fortune()              -- Footer
-theme.section.buttons.val =                       -- Menu
+alpha.setup(theme.config)                -- Theme
+--theme.section.header.val  = ascii_bloody -- Non-animated header
+
+theme.section.header.val = milli.load({ splash = milliSplash }).frames[1]
+
+milli.alpha(
+{
+  loop   = true,
+  splash = milliSplash
+})
+
+theme.section.footer.val  = fortune()    -- Footer
+theme.section.buttons.val =              -- Menu
 {
   theme.button('i',       '  New file',          ':enew<CR>'),
   theme.button('SPC SPC', '  Recent files',      ':Telescope oldfiles<CR>'),
