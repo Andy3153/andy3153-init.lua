@@ -128,7 +128,8 @@ require('lazy').setup(
 
       {
         "amansingh-afk/milli.nvim",                           -- Animated splash screens
-        lazy = false,
+        build  = ':MilliInstall lights',
+        lazy = false
       },
     },
 
