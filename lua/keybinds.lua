@@ -37,12 +37,6 @@ nnoremap( '<leader>l',       '<C-w><C-l>')                                      
 nnoremap( '<leader>=',       '<C-w><C-=>')                                         -- Resize splits equally
 -- }}}
 
--- {{{ GUI editors
-nnoremaps('<C-=>',           ':lua ResizeGuiFont(1)<CR>')                          -- Increase GUI font size
-nnoremaps('<C-->',           ':lua ResizeGuiFont(-1)<CR>')                         -- Decrease GUI font size
-nnoremaps('<C-BS>',          ':lua ResetGuiFont()<CR>')                            -- Reset GUI font size
--- }}}
-
 -- {{{ Quality of life improvements
 vnoremaps('<', '<gv')                                                              -- Keep selection enabled when using << , >>
 vnoremaps('>', '>gv')                                                              -- [...]
@@ -128,6 +122,12 @@ for i = 1,9,1 do
   nnoremaps('<A-' .. i .. '>', ':BufferGoto ' .. i .. '<CR>')                      -- Go to buffers 1..9
   nnoremaps('<leader>' .. i, ':BufferGoto ' .. i .. '<CR>')                        -- Go to buffers 1..9
 end
+-- }}}
+
+-- {{{ GUI font size
+nnoremaps('<C-=>',           ':FontSizeUp 1<CR>')                                  -- Increase GUI font size
+nnoremaps('<C-->',           ':FontSizeDown 1<CR>')                                -- Decrease GUI font size
+nnoremaps('<C-BS>',          ':FontReset<CR>')                                     -- Reset GUI font size
 -- }}}
 
 -- {{{ nvim-tree

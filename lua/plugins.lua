@@ -179,6 +179,12 @@ require('lazy').setup(
   },
 
   {
+    'tenxsoydev/size-matters.nvim',                           -- GUI font resizer
+    lazy   = false,
+    config = function() require('plugin_conf.size-matters') end
+  },
+
+  {
     'nvim-telescope/telescope.nvim',                          -- Fuzzy finder
     lazy         = false,
     dependencies = { 'nvim-lua/plenary.nvim' },
