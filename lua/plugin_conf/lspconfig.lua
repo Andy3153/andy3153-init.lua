@@ -30,3 +30,25 @@ for type, icon in pairs(signs) do
   fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 -- }}}
+
+-- {{{ LSP configuration
+-- {{{ nil_ls
+vim.lsp.config.nil_ls =
+{
+  settings =
+  {
+    [ "nil" ] =
+    {
+      nix =
+      {
+        flake =
+        {
+          autoArchive    = true,
+          autoEvalInputs = true
+        }
+      }
+    }
+  }
+}
+-- }}}
+-- }}}
