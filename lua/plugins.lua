@@ -179,6 +179,12 @@ require('lazy').setup(
   },
 
   {
+    'https://forge.barrettruth.com/barrettruth/live-server.nvim', -- HTML live server
+    lazy  = true,
+    cmd   = { 'LiveServerToggle', 'LiveServerStart', 'LiveServerStop' },
+  },
+
+  {
     'tenxsoydev/size-matters.nvim',                           -- GUI font resizer
     lazy   = false,
     config = function() require('plugin_conf.size-matters') end
@@ -254,8 +260,6 @@ require('lazy').setup(
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config       = function() require('plugin_conf.nvim-ts-autotag') end
   },
-
-  'https://forge.barrettruth.com/barrettruth/live-server.nvim', -- HTML live server
 
   {
     'williamboman/mason.nvim',                                -- Mason (LSP server provider)
