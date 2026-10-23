@@ -248,6 +248,14 @@ require('lazy').setup(
   },
 
   {
+    'windwp/nvim-ts-autotag',                                 -- HTML autotag
+    lazy         = true,
+    event        = { "BufReadPre", "BufNewFile" },
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config       = function() require('plugin_conf.nvim-ts-autotag') end
+  },
+
+  {
     'williamboman/mason.nvim',                                -- Mason (LSP server provider)
     lazy         = true,
     cmd          = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
