@@ -255,6 +255,8 @@ require('lazy').setup(
     config       = function() require('plugin_conf.nvim-ts-autotag') end
   },
 
+  'https://forge.barrettruth.com/barrettruth/live-server.nvim', -- HTML live server
+
   {
     'williamboman/mason.nvim',                                -- Mason (LSP server provider)
     lazy         = true,
