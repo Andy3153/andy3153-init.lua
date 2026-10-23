@@ -135,6 +135,24 @@ autocmd('FileType',
   command = 'tnoremap <buffer> <ESC> <C-\\><C-N> | nnoremap <buffer> <silent> <ESC> :RnvimrToggle<CR><CR>'
 })
 -- }}}
+
+-- {{{ markdown-preview.nvim
+autocmd('FileType',
+{
+  pattern = 'markdown',
+  group   = 'keybinds',
+  command = 'nnoremap <silent> <leader>ll :MarkdownPreviewToggle<CR>'
+})
+-- }}}
+
+-- {{{ live-server.nvim
+autocmd('FileType',
+{
+  pattern = 'html',
+  group   = 'keybinds',
+  command = 'nnoremap <silent> <leader>ll :LiveServerToggle<CR>'
+})
+-- }}}
 -- }}}
 else
 -- {{{ --- Lightweight mode---
