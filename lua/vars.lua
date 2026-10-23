@@ -99,3 +99,7 @@ lspservers_to_install =
   'yamlls'
 }
 -- }}}
+
+-- {{{ Enable lightweight mode when running in VSCode
+if g.vscode then lightweightMode = true end
+-- }}}
