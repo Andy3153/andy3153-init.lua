@@ -44,7 +44,7 @@ vim.lsp.config.nil_ls =
         flake =
         {
           autoArchive    = true,
-          autoEvalInputs = true
+          autoEvalInputs = false
         }
       }
     }
